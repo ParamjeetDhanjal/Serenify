@@ -1,0 +1,11 @@
+flask
+flask-sqlalchemy
+flask-migrate
+gunicorn
+werkzeug
+sqlalchemy
+python-dotenv
+fuzzywuzzy
+python-Levenshtein
+requests
+pandas
