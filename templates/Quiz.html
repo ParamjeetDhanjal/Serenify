@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wellness Assessment</title>
+
+    <style>
+        :root {
+            --bg: #beddd6;
+            --card: #ffffff;
+            --primary: #5fa393;
+            --text: #1e293b;
+            --border: #5fa393;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        /* Results Section */
+        .results-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            text-align: center;
+            border: 2px solid var(--primary);
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Question Cards */
+        .q-container {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .q-text {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .option:hover {
+            background: #f1f5f9;
+        }
+
+        input[type="radio"] {
+            margin-right: 15px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: opacity 0.2s;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.9;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <div class="header">
+        <h1>Wellness Check-in</h1>
+        <p>Please complete all 26 questions below.</p>
+    </div>
+
+    {% if results %}
+    <div class="results-card">
+        <h2>Your Result: {{ results.status }}</h2>
+        <p>Total Score: <strong>{{ results.score }}</strong> / 78</p>
+        <p>
+            This assessment provides a snapshot of your current wellbeing.
+            If you are struggling, please reach out to a professional.
+        </p>
+        <a href="/quiz/" style="color: var(--primary); font-weight: 600; text-decoration: none;">
+            Retake Assessment
+        </a>
+    </div>
+    {% endif %}
+
+    <form method="POST">
+
+        {% for q in questions %}
+        {% set q_index = loop.index0 %}
+
+        <div class="q-container">
+            <span class="q-text">{{ loop.index }}. {{ q }}</span>
+
+            <div class="options-list">
+                {% for val, label in options %}
+                <label class="option">
+                    <input type="radio"
+                           name="q{{ q_index }}"
+                           value="{{ val }}"
+                           required>
+                    {{ label }}
+                </label>
+                {% endfor %}
+            </div>
+        </div>
+
+        {% endfor %}
+
+        <button type="submit" class="submit-btn">
+            Submit Assessment
+        </button>
+
+    </form>
+
+    <div class="footer-note">
+        This tool is for educational purposes and is not a clinical diagnosis.
+    </div>
+
+</div>
+
+</body>
+</html>

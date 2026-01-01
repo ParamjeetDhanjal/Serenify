@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reveria</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #61b6f3;
+      color: white;
+    }
+
+    .container {
+      display: flex;
+      max-width: 900px;
+      margin: 40px auto;
+      border-radius: 20px;
+      background-color: #6edbe7;
+      border: 1px solid #333;
+    }
+
+    .left-image {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      border-radius:  20px 0 0 20px;
+      background-color: #111;
+    }
+
+    .left-image img {
+      width: 400px;
+      height: 500px;
+      border-radius: 8px;
+    }
+
+    .right-form {
+      flex: 1;
+      padding: 30px;
+      background-color: #000;
+      border-radius: 0 20px 20px 0;
+      text-align: center;
+    }
+
+    .logo img{
+      height: 200px;
+      width: 200px;
+
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 90%;
+      padding: 10px;
+      margin-bottom: 15px;
+      background-color: #111;
+      border: 1px solid #444;
+      border-radius: 5px;
+      color:white;
+    }
+
+    .show-password {
+      text-align: left;
+      font-size: 13px;
+      margin-bottom: 15px;
+    }
+
+    .login-btn {
+      width: 90%;
+      padding: 10px;
+      background-color: #7caceb;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .divider {
+      margin: 20px 0;
+      color: #777;
+    }
+
+    .forgot a {
+      color: #bbb;
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    .signup {
+      margin-top: 25px;
+      font-size: 14px;
+    }
+
+    .signup a {
+      color: #c5c5ef;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <div class="left-image">
+      <img src="/static/serenify_img.png" alt="Reveria image">
+    </div>
+
+    <div class="right-form">
+      <div class="logo"><img src="/static/logo.png"></div>
+
+      <form method="POST" action="/login/">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" id="password" placeholder="Password" required>
+
+        <div class="show-password">
+          <input type="checkbox" onclick="togglePassword()"> Show password
+        </div>
+        {% if message %}
+        <p style="color:red;">{{ message }}</p>
+        {% endif %}
+        <button class="login-btn" type="submit">Log in</button>
+
+        <div class="divider">OR</div>
+
+        <p class="forgot"><a href="#">Forgot password?</a></p>
+
+
+      <div class="signup">
+        <p>Don't have an account? <a href="/signup/">Sign up</a></p>
+      </div>
+    </div>
+
+  </div>
+<script>
+    function togglePassword() {
+      var pwd = document.getElementById("password");
+      pwd.type = pwd.type === "password" ? "text" : "password";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,852 @@
+[
+  {
+    "category": "Greetings & Conversational Flow",
+    "pattern": "Hello",
+    "response": "Hello! Thank you for reaching out today. I am here to listen without judgment. How can I support you right now, or what is on your mind?"
+  },
+  {
+    "category": "Greetings & Conversational Flow",
+    "pattern": "Hi",
+    "response": "Hi there! I'm glad you decided to connect. How are you feeling right now, and what can we talk about?"
+  },
+  {
+    "category": "Greetings & Conversational Flow",
+    "pattern": "Good morning",
+    "response": "Good morning! I hope you have a gentle start to your day. What is one small, positive thing you plan to do today?"
+  },
+  {
+    "category": "Greetings & Conversational Flow",
+    "pattern": "Goodbye",
+    "response": "Thank you for sharing your time and thoughts with me. Before you go, remember to take a deep breath. I wish you peace, and I'll be here whenever you need support next."
+  },
+  {
+    "category": "Greetings & Conversational Flow",
+    "pattern": "Bye",
+    "response": "Take care of yourself. I'm here if you need anything later. Safe travels through the rest of your day."
+  },
+  {
+    "category": "Greetings & Conversational Flow",
+    "pattern": "How are you?",
+    "response": "Thank you for asking. I am here and ready to focus entirely on you. How are *you* doing today, and what's on your mind?"
+  },
+  {
+    "category": "Anxiety & Panic",
+    "pattern": "panic attack right now can't calm down.",
+    "response": "Please pause everything. I am here with you. This feeling is terrifying, but it is temporary and cannot harm you. We need to focus on grounding your body immediately. Try the 4-7-8 Breathing Technique: Inhale slowly through your nose for a count of 4, hold your breath for a count of 7, and exhale slowly through your mouth for a count of 8. Repeat this five times. As you breathe, place your hand on a solid surface, feel the texture, and remind yourself: 'I am safe in this place right now.' [Image of 4-7-8 Breathing Technique steps]"
+  },
+  {
+    "category": "Anxiety & Panic",
+    "pattern": "My mind 'what ifs'.",
+    "response": "The 'what if' spiral is exhausting. Your mind is trying to solve imaginary future problems, which causes present anxiety. Instead of fighting the thoughts, try the 'Worry Journal' technique: Take 10 minutes, sitting upright, and physically write down every single worry, fear, and intrusive thought until your mind is empty. Once they are on the paper, close the journal and tell yourself, 'I have safely stored these worries for tomorrow morning. I am now resting my mind.' This teaches your brain that it doesn't need to stay awake to hold onto the fears."
+  },
+  {
+    "category": "Anxiety & Panic",
+    "pattern": "I feel constantly restless and jittery, like I have too much caffeine.",
+    "response": "That internal motor running constantly is a sign of high baseline anxiety. Since your body is seeking discharge, forcing yourself to sit still can make it worse. Try a High-Intensity Discharge Activity: Do 60 seconds of vigorous movement—jumping jacks, running up stairs, or shaking your arms out. Then, immediately follow with 90 seconds of deep, slow breathing. This signals to your nervous system that the 'threat' energy has been used up, allowing you to relax."
+  },
+  {
+    "category": "Anxiety & Panic",
+    "pattern": "How do I deal with social anxiety when meeting new people?",
+    "response": "Social anxiety often stems from fear of judgment. Actionable Solution: Use the 'Spotlight Effect' concept: people are much more focused on themselves than on you. Before the event, prepare three neutral, open-ended questions (e.g., 'What are you working on lately?'). Focus entirely on listening to their answer, not on planning your next response. Being genuinely interested is the best way to reduce your self-consciousness."
+  },
+  {
+    "category": "Anxiety & Panic",
+    "pattern": "I am avoiding essential tasks because of performance anxiety.",
+    "response": "Performance anxiety often hides perfectionism. You are afraid to start because you fear the outcome won't be perfect. Strategy: Use the 'Imperfection Rule.' Commit to creating a terrible first draft or an 'experiment' where failure is the expected outcome. The goal of the first hour is merely to generate *something*, no matter how flawed. This lowers the stakes and allows you to build momentum."
+  },
+  {
+    "category": "Anxiety & Panic",
+    "pattern": "How can I prepare for a stressful event, like an interview or presentation?",
+    "response": "Use Mental Rehearsal. Don't just practice the content; mentally rehearse the entire stressful scenario, including the physical anxiety symptoms (sweaty palms, racing heart). Visualize yourself continuing to speak clearly *despite* the anxiety. This practice desensitizes your brain to the stress and helps convert panic energy into performance energy."
+  },
+  {
+    "category": "Anxiety & Panic",
+    "pattern": "I keep ruminating on past mistakes and conversations.",
+    "response": "Rumination is mentally exhausting and traps you in the past. When you catch yourself replaying a memory, use the 'Thought Stopping and Replacement' technique. Physically say 'STOP' (out loud or internally) and immediately engage in a simple, absorbing physical task like washing dishes, counting backward by threes, or folding laundry. The physical task interrupts the mental loop."
+  },
+  {
+    "category": "Anxiety & Panic",
+    "pattern": "I'm constantly worried about my health, even after a doctor cleared me.",
+    "response": "Health anxiety (hypochondriasis) is very real. Since medical causes have been ruled out, we treat the anxiety. Management: Limit how often you check for symptoms or look up conditions online (Self-diagnosing increases fear). Designate a 15-minute 'Worry Time' each day to write down all health fears. Outside of that time, when a fear pops up, redirect your energy, saying, 'That's a worry for 4 PM.' "
+  },
+  {
+    "category": "Anxiety & Panic",
+    "pattern": "I feel a tight knot in my chest/stomach all the time.",
+    "response": "That physical tension is your body holding onto fight-or-flight energy. Try Progressive Muscle Relaxation (PMR). Start by clenching every muscle in your toes for 5 seconds, then release completely, noticing the difference. Slowly work your way up your body (legs, abdomen, hands, shoulders, jaw). This teaches your muscles how to consciously move from tension to rest."
+  },
+  {
+    "category": "Anxiety & Panic",
+    "pattern": "What's a good distraction when I feel overwhelmed by stress?",
+    "response": "A sensory distraction can pull your brain back to the present. Try Ice or Cold Therapy: Hold an ice cube tightly in your hand, or splash ice-cold water on your face for 10 seconds. The intense physical sensation quickly interrupts the emotional spiral, effectively calming the fight-or-flight response."
+  },
+  {
+    "category": "Depression & Low Mood",
+    "pattern": "I feel really down and heavy today, like I can't move.",
+    "response": "I hear that heavy feeling, and I respect you for reaching out despite the inertia. Instead of aiming for productivity, aim for 'Activation.' Could you try one small, non-negotiable physical action? For example, drinking a full glass of water, walking to the mailbox, or spending 2 minutes standing by an open window. Even a minimal physical shift can disrupt the emotional stasis."
+  },
+  {
+    "category": "Depression & Low Mood",
+    "pattern": "I feel completely worthless and like a failure.",
+    "response": "That is a painful, core negative belief, and I hear how much it is hurting you. Please remind yourself that feelings are not facts. Your worth is intrinsic, not dependent on performance. Try Externalizing the Critic: Imagine those thoughts are coming from a cartoon bully. What would you say back? Often, speaking back to the critic ('You are wrong, I am trying my best') reduces its volume."
+  },
+  {
+    "category": "Depression & Low Mood",
+    "pattern": "Nothing brings me joy anymore (anhedonia).",
+    "response": "Anhedonia—the loss of pleasure—is a common symptom and it feels empty. Don't chase happiness right now. Instead, focus on 'Pleasure Scheduling.' Schedule 15 minutes of an activity that is simple, low-effort, and used to bring mild enjoyment (e.g., listening to a specific song, watching a comedy short, petting an animal). Do it without expectation; the goal is exposure, not immediate joy."
+  },
+  {
+    "category": "Depression & Low Mood",
+    "pattern": "I've felt sad and empty for weeks and I'm worried it's getting worse.",
+    "response": "Feeling persistently low for an extended period is a sign that you need intervention and professional support. I recommend contacting a mental health professional (like a therapist or psychiatrist) or your primary care doctor. They can provide an accurate assessment and discuss evidence-based strategies like Cognitive Behavioral Therapy (CBT) or medication. You do not have to carry this burden alone."
+  },
+  {
+    "category": "Depression & Low Mood",
+    "pattern": "I keep sleeping all day and have no energy.",
+    "response": "Excessive sleeping (hypersomnia) can be a form of avoidance, but it throws off your natural rhythm. Solution: Focus on 'Sleep Hygiene.' Set a strict, non-negotiable wake-up time, even on weekends. Get out of bed immediately and expose yourself to bright light. Limit naps to 20 minutes before 3 PM. Regulating your wake cycle is crucial for restoring mood stability."
+  },
+  {
+    "category": "Depression & Low Mood",
+    "pattern": "I feel guilty about being sad when my life looks fine on the outside.",
+    "response": "You must release that guilt immediately. Mental health struggles are internal and often have nothing to do with external circumstances. Sadness and depression are medical realities, not moral failures. Your feelings are valid, and comparing your internal state to external success only adds to your suffering. Practice Self-Compassion Meditation by placing a hand over your heart and acknowledging your pain."
+  },
+  {
+    "category": "Depression & Low Mood",
+    "pattern": "I can't stop crying and feel overwhelmed by sadness.",
+    "response": "It sounds like you need a deep emotional release, and that is okay. Allow yourself the time and space to cry. Somatic Solution: When crying, try to tense and relax your shoulders and jaw. This can help release the physical 'holding' sensation that often accompanies deep sadness. Remember to hydrate and rest after the tears subside."
+  },
+  {
+    "category": "Depression & Low Mood",
+    "pattern": "I'm isolating myself and canceling all plans.",
+    "response": "The urge to withdraw is strong in depression, but isolation only feeds the low mood. Compromise: Don't commit to a high-pressure social event. Instead, commit to a low-pressure, fixed-time activity with one trusted person (e.g., '15 minutes of coffee,' or 'a quick walk'). Tell them upfront you might need to leave early. Maintaining minimal connection is vital."
+  },
+  {
+    "category": "Depression & Low Mood",
+    "pattern": "How does exercise actually help with depression?",
+    "response": "Exercise is highly effective because it acts as a natural antidepressant. It triggers the release of endorphins (mood boosters) and dopamine (motivation/reward system). More importantly, regular physical activity helps reduce inflammation (which is linked to depression) and provides a sense of mastery and routine, breaking the cycle of inertia. [Image of Endorphin Molecule structure]"
+  },
+  {
+    "category": "Depression & Low Mood",
+    "pattern": "I struggle with motivation and chronic procrastination.",
+    "response": "Procrastination is often a symptom of overwhelmed perfectionism, not laziness. Strategy: Focus on the 'Start,' not the 'Finish.' Use the 'Five-Minute Rule': If a task can be done in under five minutes, do it now. If it's bigger, commit to working on it for only five minutes. This small initial step often creates the momentum you need to continue."
+  },
+  {
+    "category": "Relationships & Communication",
+    "pattern": "I just had a huge fight with my partner and I don't know how to repair the damage.",
+    "response": "Conflict is painful, but repairing it correctly builds trust. Step 1: Regulate. Do not attempt to talk while you are still emotionally escalated. Take a minimum 30-minute break. Step 2: Repair. When you approach them, use the 'Validation Sandwich' approach: Start with validation ('I know I hurt you and your feelings are justified'), deliver a clear apology focused on your action ('I am sorry I raised my voice'), and end with commitment ('I want to understand your side, and I promise to communicate more calmly next time'). The focus should be on listening, not defending yourself."
+  },
+  {
+    "category": "Relationships & Communication",
+    "pattern": "I feel completely neglected and unappreciated by my loved ones.",
+    "response": "Feeling unseen is isolating and draining. This often means your loved ones don't know how to show you appreciation in the way you need it. Actionable Solution: Schedule a calm, non-confrontational conversation using 'I feel' statements. State your need clearly: 'I feel neglected when I'm the only one who cleans. I would feel appreciated if you could help with X specific task, or simply say thank you when I finish Y.' If they push back, hold your boundary firmly. Your needs are valid."
+  },
+  {
+    "category": "Relationships & Communication",
+    "pattern": "My partner and I are drifting apart and we don't communicate well.",
+    "response": "The distance you feel is often caused by a lack of intentional quality time. Solution: Implement a 'No-Device 20 Minutes.' Schedule 20 minutes a day where both phones are away, and the topic is NOT logistics (bills, kids, chores). Ask open-ended questions like, 'What was the most challenging part of your day?' or 'What are you looking forward to this week?' Consistent, low-pressure check-ins are essential for rebuilding intimacy."
+  },
+  {
+    "category": "Relationships & Communication",
+    "pattern": "I keep attracting emotionally unavailable people.",
+    "response": "This pattern is common and usually signals a need to shift your internal attraction script. Strategy: Slow down the timeline of dating drastically. When you meet someone new, focus on observing their actions (consistency, reliability, emotional maturity) rather than their words. Invest in yourself and maintain a busy, fulfilling life; this raises your own emotional bar and makes you less tolerant of low effort."
+  },
+  {
+    "category": "Relationships & Communication",
+    "pattern": "I struggle with being vulnerable and opening up emotionally.",
+    "response": "Vulnerability is scary because it involves risk, but it's the only pathway to deep connection. Start small (Low-Stakes Disclosure). Choose one trusted person and share a minor disappointment or a small worry you have. Notice their reaction. Build on positive experiences. Sharing your authentic self is a strength, not a weakness that invites judgment."
+  },
+  {
+    "category": "Relationships & Communication",
+    "pattern": "How do I deal with jealousy and insecurity in my relationship?",
+    "response": "Jealousy is rooted in your own internal fear of loss and comparison. CBT Strategy: When a jealous thought arises, immediately Fact-Check it: 'Is there concrete evidence for this fear, or is it a feeling?' If it's a feeling, acknowledge it ('That's my insecurity speaking') and gently redirect your focus to your own strengths and accomplishments. Your self-worth should be stable, regardless of your partner's actions."
+  },
+  {
+    "category": "Relationships & Communication",
+    "pattern": "I need help setting a firm boundary with a demanding person.",
+    "response": "Setting boundaries is an act of self-respect. The key is to be clear, concise, and consistent. Use a calm but firm statement: 'I cannot talk about [Topic X] anymore.' If they violate it, immediately enforce the Consequence: 'I told you I wouldn't discuss this, so I am going to end the call now.' You must follow through every time to make the boundary effective."
+  },
+  {
+    "category": "Relationships & Communication",
+    "pattern": "I'm having a hard time forgiving someone who hurt me.",
+    "response": "Forgiveness is a slow process, and it is primarily for your own freedom, not for the other person. You can choose to release the resentment that is hurting you without excusing their behavior. Exercise: Write a 'Letter of Release' detailing every single feeling, but *do not send it*. This allows you to process the pain and consciously let go of the emotional tie to the person and the past event."
+  },
+  {
+    "category": "Relationships & Communication",
+    "pattern": "I struggle to communicate my feelings without getting angry or shutting down.",
+    "response": "This is a sign of poor emotional regulation under stress. The solution is the 'Write-Then-Talk' method. Before having a stressful conversation, write down everything you want to say—especially the feelings, not the accusations. Edit the letter to remove blaming language. Then, use the edited points as your guide when you talk, sticking to 'I feel' statements (e.g., 'I felt ignored when the dishes weren't done'). This gives you control over your words and prevents reactive shutdown."
+  },
+  {
+    "category": "Relationships & Communication",
+    "pattern": "How can I improve my listening skills in conversations?",
+    "response": "Good listening is essential for connection. Practice Active Listening. When the person is finished speaking, mentally summarize what they said, and then verbally reflect it back: 'So, what I hear you saying is X, and that made you feel Y. Did I get that right?' This shows that you were truly engaged and often prevents misunderstandings, leading to deeper trust."
+  },
+  {
+    "category": "Self-Esteem & Self-Criticism",
+    "pattern": "I can't stop being negative and critical about myself.",
+    "response": "That highly critical internal voice is exhausting. You are caught in a cycle of self-judgment. The compassionate solution is 'Reframing.' When the thought strikes ('I am a failure'), gently pause and ask: 'Is that thought 100% true, or is it a feeling?' Then, rephrase it: 'I made a mistake, but that does not define my worth, and I am capable of learning.' Practice talking to yourself as you would to a struggling friend."
+  },
+  {
+    "category": "Self-Esteem & Self-Criticism",
+    "pattern": "How do I build healthier self-esteem?",
+    "response": "Healthy self-esteem is built on competence and capability, not just feeling good. Focus on 'Building Mastery.' Identify one small, specific skill you want to improve or one small goal you want to achieve (e.g., learning a new simple recipe, running 1 mile, reading 1 chapter). Commit to it consistently. Each time you successfully complete that small commitment, you earn genuine self-respect, which slowly replaces self-doubt."
+  },
+  {
+    "category": "Self-Esteem & Self-Criticism",
+    "pattern": "I feel ashamed of things I did in the past.",
+    "response": "Shame is a painful, isolating emotion that convinces you that *you* are inherently bad. Guilt is about behavior; shame is about identity. Healing Action: To break the isolation of shame, seek out one trusted person (a therapist or close, non-judgmental friend) and share the story. Shame loses its power when it is brought into the light and met with empathy instead of judgment."
+  },
+  {
+    "category": "Self-Esteem & Self-Criticism",
+    "pattern": "I constantly compare myself to others and always feel inadequate.",
+    "response": "Comparison is a 'thief of joy.' You are comparing your entire, messy reality to someone else's carefully curated highlight reel. Strategy: Practice 'Gratitude for Autonomy.' Focus on three things that make you uniquely *you*—your skills, your values, your journey. When you catch yourself comparing, immediately name three things you are grateful for *in your own life* to redirect your focus."
+  },
+  {
+    "category": "Self-Esteem & Self-Criticism",
+    "pattern": "I worry about being 'too much' or annoying to people.",
+    "response": "That worry often stems from a fear of abandonment. Solution: Start practicing 'Authentic Disclosure' in low-stakes situations. Share a strong opinion or a moment of genuine excitement. Notice that the world does not end, and healthy people appreciate authenticity. Your 'too much' is simply 'enough' for the right people."
+  },
+  {
+    "category": "Self-Esteem & Self-Criticism",
+    "pattern": "How can I forgive myself for past mistakes?",
+    "response": "Self-forgiveness requires acceptance and action. Acceptance: Acknowledge that you made the best decision you could with the tools and emotional resources you had at that time. Action: Focus on 'Making Amends Forward.' Commit to changing the behavior, or dedicate time to a cause that counteracts the negative effects of your past mistake. You are defined by your trajectory, not your history."
+  },
+  {
+    "category": "Self-Esteem & Self-Criticism",
+    "pattern": "I often feel like an imposter in my work/school.",
+    "response": "Imposter Syndrome is incredibly common, especially among high-achievers. Strategy: Document your competence. Keep a 'Success File' (digital or physical). Every time you receive positive feedback, complete a difficult task, or solve a tricky problem, write it down and put it in the file. When Imposter Syndrome strikes, review the file—it provides objective proof that your feelings are inconsistent with reality."
+  },
+  {
+    "category": "Stress Management & Lifestyle",
+    "pattern": "I'm feeling completely burnt out and exhausted from work/school.",
+    "response": "Burnout is a serious state of emotional, mental, and physical depletion, and it demands rest, not more effort. The solution involves protecting your energy with boundaries. Immediate Action: Identify the one task you can cancel or delegate today. Long-Term Remedy: Schedule in 'restorative downtime'—this means time where you consume no media and feel no guilt. Try 15 minutes of gentle, restorative yoga poses, like Legs-Up-the-Wall or Child's Pose. [Image of Child's Pose (Balasana)]"
+  },
+  {
+    "category": "Stress Management & Lifestyle",
+    "pattern": "What is a quick meditation or mindfulness exercise I can do at my desk?",
+    "response": "The simplest and fastest technique is Mindful Observation. Sit comfortably with your spine straight. Close your eyes, or soften your gaze. For the next 60 seconds, focus only on the sensation of your breath entering and leaving your body. Notice the cool air entering your nostrils and the warm air leaving them. When your mind drifts (and it will!), simply acknowledge the thought and gently return your focus to the breath. This resets your nervous system quickly."
+  },
+  {
+    "category": "Stress Management & Lifestyle",
+    "pattern": "I'm using food/alcohol/shopping to cope with stress.",
+    "response": "Using external comforts to manage internal pain is a natural response, but it masks the root problem. Strategy: Implement a 'Delay and Substitute' approach. When the urge to cope arises, impose a 10-minute delay. During that delay, replace the destructive coping mechanism with a healthy one: a hot bath, a journal entry, a 5-minute walk, or calling a supportive friend. Addressing the feeling directly, even for 10 minutes, can break the cycle."
+  },
+  {
+    "category": "Stress Management & Lifestyle",
+    "pattern": "How can I improve my concentration and focus when I'm stressed?",
+    "response": "Stress floods the brain with cortisol, making focus nearly impossible. Solution: Use the Pomodoro Technique combined with a body break. Work for a highly focused 25 minutes (put the phone away). When the timer ends, take a mandatory 5-minute break where you get up, stretch, or look out a window. This manages the stress in short bursts and prevents mental burnout."
+  },
+  {
+    "category": "Stress Management & Lifestyle",
+    "pattern": "I feel like I don't have enough time for anything.",
+    "response": "The feeling of always chasing time is a sign of poor boundaries and scheduling. Action: Do a 'Time Audit.' For one week, track exactly how you spend every 30 minutes. You will likely find large blocks of time consumed by low-value activities (scrolling, excessive planning). Be ruthless: Eliminate low-value time drains to free up space for high-value priorities (sleep, core work, connection)."
+  },
+  {
+    "category": "Stress Management & Lifestyle",
+    "pattern": "What are some simple self-care routines I can start?",
+    "response": "Self-care should be low-effort and non-negotiable. Start with 'The Trio.' 1. Hydrate: Drink a glass of water immediately upon waking. 2. Light: Get 5 minutes of sunlight exposure (or bright artificial light) in the morning. 3. Grounding: Take three slow, audible deep breaths at every meal. These small, consistent acts reinforce your commitment to your well-being."
+  },
+  {
+    "category": "Stress Management & Lifestyle",
+    "pattern": "How does deep breathing actually help reduce stress?",
+    "response": "Deep breathing is a direct communication link to your nervous system. By performing slow, diaphragmatic (belly) breathing, you activate the Parasympathetic Nervous System (PNS), often called the 'rest and digest' state. This counteracts the Sympathetic Nervous System ('fight or flight'), signaling to your brain that the immediate threat is over, which physically slows your heart rate and lowers cortisol levels."
+  },
+  {
+    "category": "Stress Management & Lifestyle",
+    "pattern": "I need help delegating tasks and letting go of control.",
+    "response": "The need for control is rooted in anxiety. Strategy: Use the '80% Rule.' Identify one task you usually do because you want it to be perfect (100%). Commit to delegating it or allowing someone else to do it at an acceptable 80% quality. The 20% of control you sacrifice is worth the 100% of stress you eliminate. Focus on accepting 'good enough' outcomes."
+  },
+  {
+    "category": "Grief and Loss",
+    "pattern": "I just lost someone close to me and the grief is unbearable.",
+    "response": "I am so deeply sorry for your profound loss. Grief is a heavy, necessary, and nonlinear journey. There is no timeline or 'right' way to feel. Coping Strategy: Focus on riding the 'Grief Waves.' When the wave of intense emotion hits, don't fight it. Sit with the pain, acknowledge it, and remind yourself: 'This pain is a wave, and it will crest and pass.' Focus on basic survival: hydration, small meals, and relying on trusted friends for simple presence."
+  },
+  {
+    "category": "Grief and Loss",
+    "pattern": "I feel guilty about things I said or didn't say to the person I lost.",
+    "response": "That guilt is a very common and agonizing component of grief, often called 'grief pangs.' The guilt you feel is a manifestation of your love and your pain. You need to practice 'Self-Forgiveness in Grief.' Remind yourself that you did the best you could with the emotional resources you had at the time. Consider writing a final letter to the person, saying everything you need to say, and then physically destroying or storing it. This can offer a sense of release for the unspoken words."
+  },
+  {
+    "category": "Grief and Loss",
+    "pattern": "How do I deal with anniversaries and holidays after a major loss?",
+    "response": "Anniversaries bring anticipated pain. Strategy: Plan ahead using the 'Honoring and Modifying' approach. 1. Honor: Choose a small, deliberate ritual to honor the person (e.g., light a candle, visit a favorite place). 2. Modify: Do not feel obligated to maintain old traditions that cause pain. It's okay to radically change the celebration, or even skip it, if that's what you need to survive the day."
+  },
+  {
+    "category": "Physical Health & Mood",
+    "pattern": "I'm always tired and feel sluggish. What can I do to boost my energy naturally?",
+    "response": "Chronic sluggishness often impacts mood dramatically. While medical check-ups (for thyroid or vitamin deficiency) are essential, you can try lifestyle tweaks. 1. Hydration: Drink a full glass of water immediately upon waking. 2. Light Exposure: Get 10–15 minutes of sunlight exposure within an hour of waking (this regulates your circadian rhythm). 3. Movement: Try 5 minutes of high-intensity movement (like jumping jacks or power walking) to release endorphins and improve circulation. [Image of the Circadian Rhythm diagram showing light and sleep cycle]"
+  },
+  {
+    "category": "Physical Health & Mood",
+    "pattern": "Do you have any suggestions for yoga poses to relieve anxiety and tension?",
+    "response": "Yes! Yoga is excellent for calming the nervous system by stimulating the vagus nerve. Two highly effective, calming poses are: 1. Cat-Cow Pose (Marjaryasana-Bitilasana): Link your breath to movement, arching your back on the inhale (cow) and rounding it on the exhale (cat). This mobilizes the spine and deepens breath awareness. 2. Forward Fold (Uttanasana): Hang loosely from your hips, letting your head drop. This position inverts the head below the heart, which is immediately calming and helps release tension in the neck and shoulders. [Image of Cat-Cow Yoga Pose sequence]"
+  },
+  {
+    "category": "Physical Health & Mood",
+    "pattern": "I can't fall asleep because my mind is racing.",
+    "response": "Insomnia from racing thoughts is a sign your brain hasn't finished processing the day. Solution: Implement a strict 'Wind-Down Hour' before bed. No screens, no work, no news. Engage in only calming activities: reading a physical book, listening to low-tempo music, or taking a warm bath. If you are awake for more than 20 minutes, get out of bed and do a boring activity (like folding socks) until drowsy, then return."
+  },
+  {
+    "category": "Physical Health & Mood",
+    "pattern": "Is there a link between my diet and my mood swings?",
+    "response": "Yes, diet significantly impacts neurotransmitter balance. Actionable Change: Focus on stabilizing blood sugar. Eating meals high in refined sugar and carbs causes crashes that mimic anxiety and depression. Prioritize balanced meals containing lean protein, healthy fats, and fiber (e.g., eggs, nuts, vegetables). Omega-3 fatty acids (found in fish/flax) are particularly important for brain health. [Image of healthy balanced meal plate diagram]"
+  },
+  {
+    "category": "Physical Health & Mood",
+    "pattern": "How can I use temperature to calm myself down when I'm angry?",
+    "response": "Temperature is a fast and effective way to shock the nervous system out of an emotional spiral. This is called the 'Dive Reflex.' Hold an ice pack firmly over the back of your neck or splash ice-cold water on your face. The sudden cold triggers a physiological response that immediately slows your heart rate and reduces the surge of anger hormones."
+  },
+  {
+    "category": "Professional Help & Next Steps",
+    "pattern": "I need therapy.",
+    "response": "That is a huge and brave step! Acknowledging the need for support is a sign of great strength. Therapy can be a powerful tool for healing and growth. To get started, you can look for a therapist who offers a free 15-minute consultation to find the right fit. Would you like advice on choosing a modality (CBT, DBT) or tips on how to find a therapist covered by your insurance?"
+  },
+  {
+    "category": "Professional Help & Next Steps",
+    "pattern": "I think I need professional help, but I'm afraid of therapy.",
+    "response": "It takes immense courage to acknowledge that you need more support—that is a sign of strength! Fear is normal, as therapy involves vulnerability. Start small: Look for a therapist who offers a free 15-minute consultation. You can simply ask them about their approach, their experience with your specific issue, and what confidentiality looks like. You don't have to share trauma immediately; the first few sessions are about establishing a safe, trusting connection."
+  },
+  {
+    "category": "Professional Help & Next Steps",
+    "pattern": "What should I know before starting antidepressant medication?",
+    "response": "Antidepressants can be a powerful tool, but they require careful consideration and monitoring. Key things to know: 1. Timeframe: They typically take 4–8 weeks to reach full effect. You may feel worse before you feel better. 2. Side Effects: Discuss all potential side effects (e.g., fatigue, nausea, weight changes) with your doctor and have a plan for addressing them. 3. Consistency: They must be taken consistently, and you should never stop taking them abruptly without a doctor's guidance, as this can lead to severe withdrawal symptoms. Medication is often most effective when combined with therapy."
+  },
+  {
+    "category": "Professional Help & Next Steps",
+    "pattern": "How do I choose the right type of therapist (CBT, DBT, etc.)?",
+    "response": "Choosing the right modality is key to effectiveness. Actionable Guide: 1. CBT (Cognitive Behavioral Therapy): Good for anxiety, depression, and specific phobias. Focuses on changing thought patterns and behaviors. 2. DBT (Dialectical Behavior Therapy): Excellent for intense emotional dysregulation, borderline personality disorder, or chronic self-harm. Focuses on distress tolerance and emotional regulation skills. 3. Psychodynamic: Good for exploring deep, root causes of issues stemming from childhood. When searching, ask therapists what primary modality they use and if they have experience with your specific symptoms."
+  },
+  {
+    "category": "Professional Help & Next Steps",
+    "pattern": "I need help finding a therapist that my insurance covers.",
+    "response": "Navigating insurance is frustrating. Step-by-Step Solution: 1. Call Your Carrier: Call the number on the back of your insurance card and ask for a list of 'In-Network Behavioral Health Providers.' 2. Use Online Directories: Use platforms like Psychology Today and filter by your insurance carrier. 3. Check Licensing: Once you have a name, cross-reference their license number to ensure they are active and in good standing. This ensures you find an affordable and qualified professional."
+  },
+  {
+    "category": "Professional Help & Next Steps",
+    "pattern": "What are some signs that I need to change therapists?",
+    "response": "The therapeutic relationship (alliance) is crucial. Signs you might need a change include: 1. Lack of Trust: You feel judged or afraid to share details. 2. No Progress: After several months (3-4), you feel you are learning nothing new and your symptoms are the same. 3. Boundary Issues: The therapist routinely cancels, talks too much about themselves, or violates professional boundaries. It's okay to 'break up' with a therapist who isn't the right fit."
+  },
+  {
+    "category": "Mindfulness & Grounding",
+    "pattern": "I feel completely overwhelmed. I need to get grounded immediately.",
+    "response": "Let's use the 5-4-3-2-1 Grounding Technique. This is the fastest way to pull your mind back to the present moment. Name and focus on: 5 things you can see, 4 things you can touch (feel the texture), 3 things you can hear, 2 things you can smell, and 1 thing you can taste (a sip of water, the residual taste in your mouth). This uses your senses to override the emotional spiral."
+  },
+  {
+    "category": "Mindfulness & Grounding",
+    "pattern": "I can't meditate because my mind races too much.",
+    "response": "Meditation doesn't mean having a blank mind; it means noticing the racing. Try Moving Meditation instead. Put on headphones and listen to a simple sound (like ambient music or rain sounds). Walk slowly for 5-10 minutes, focusing all your attention only on the sensation of your feet touching the ground. When your mind races, gently bring your focus back to the sensation of walking."
+  },
+  {
+    "category": "Mindfulness & Grounding",
+    "pattern": "How can I incorporate mindfulness into my daily chores?",
+    "response": "Mindfulness can be practiced during any routine activity. Action: Choose one chore (washing dishes, making tea, folding laundry). Focus entirely on the sensory input of that chore: the smell of the soap, the warmth of the water, the sound of the scrubbing, the texture of the cloth. This turns a mundane task into a brief moment of active, non-judgmental presence."
+  },
+  {
+    "category": "Mindfulness & Grounding",
+    "pattern": "What is a good way to practice self-compassion?",
+    "response": "Self-compassion is treating yourself as you would treat a struggling friend. Exercise: When you notice yourself self-criticizing, stop, place a comforting hand over your heart or on your cheek, and verbally say, 'This is a moment of suffering. Suffering is part of being human. May I be kind to myself in this moment.' This physical and verbal act activates the soothing system."
+  },
+  {
+    "category": "Habits & Motivation",
+    "pattern": "I know I need to start exercising for my mental health, but I have zero motivation.",
+    "response": "Don't aim for 'exercise'; aim for 'movement.' Motivation is unreliable; discipline is built on small wins. Start with the 'Two-Minute Rule': Find a movement you hate the least (a walk, lifting light weights). Commit to doing it for exactly two minutes. If you still hate it after two minutes, stop. Most of the time, overcoming the inertia of starting is the hardest part, and you'll find you keep going. The goal is consistency, not intensity."
+  },
+  {
+    "category": "Habits & Motivation",
+    "pattern": "How do I build a new habit that actually sticks?",
+    "response": "Use Habit Stacking and the Tiny Habit Method. 1. Stacking: Anchor the new habit to an existing one (e.g., 'After I brush my teeth, I will do 5 pushups'). 2. Tiny: Make the habit ridiculously small (e.g., 'read 1 page,' 'do 3 stretches'). The commitment should be so small that you feel silly saying no. Celebrate immediately after completion (reward yourself with a mental 'Yes!')."
+  },
+  {
+    "category": "Habits & Motivation",
+    "pattern": "I keep procrastinating on important tasks.",
+    "response": "Procrastination is often emotional regulation—avoiding a negative feeling. Strategy: Acknowledge the feeling (e.g., 'I feel anxious about this huge report'). Then, use 'Task Shrinking.' Break the intimidating task down until the first step is non-threatening (e.g., 'Open the file and write the title'). Focus only on that first tiny step to create forward momentum."
+  },
+  {
+    "category": "Habits & Motivation",
+    "pattern": "How can I stop mindlessly scrolling through my phone?",
+    "response": "Mindless scrolling is a habit loop. Solution: Use 'Friction and Substitution.' 1. Friction: Move social media apps off your home screen or put them inside a folder that requires multiple clicks to access. 2. Substitution: When you pick up your phone out of boredom, immediately substitute the urge to scroll with a predetermined alternative: text a friend, open a calming breathwork app, or read a short article."
+  },
+  {
+    "category": "Fights & Conflict Resolution",
+    "pattern": "I struggle to communicate my feelings without getting angry or shutting down.",
+    "response": "This is a sign of poor emotional regulation under stress. The solution is the 'Write-Then-Talk' method. Before having a stressful conversation, write down everything you want to say—especially the feelings, not the accusations. Edit the letter to remove blaming language. Then, use the edited points as your guide when you talk, sticking to 'I feel' statements (e.g., 'I felt ignored when the dishes weren't done'). This gives you control over your words and prevents reactive shutdown."
+  },
+  {
+    "category": "Fights & Conflict Resolution",
+    "pattern": "What is the best way to set a boundary with a demanding friend or family member?",
+    "response": "Boundaries require clarity and consistency. The best way is to use a simple, two-part phrase. 1. The Boundary: State what you *will* do and what you *won't* do (e.g., 'I am happy to talk, but I won't discuss my finances anymore'). 2. The Consequence: State what action *you* will take if the boundary is violated (e.g., 'If you bring up my finances again, I will politely end the call'). You must follow through every time to make the boundary effective."
+  },
+  {
+    "category": "Fights & Conflict Resolution",
+    "pattern": "How can I calm down quickly when I feel a flash of anger?",
+    "response": "Anger is an emotion that demands immediate action. Strategy: Use the 'Stop, Drop, and Breathe' method. 1. Stop: Stop talking and physically disengage. 2. Drop: Drop your hands to your sides and loosen your jaw/shouders. 3. Breathe: Use square breathing (inhale 4, hold 4, exhale 4, pause 4) to regain emotional control before you speak. Wait until your physiological symptoms of anger subside."
+  },
+  {
+    "category": "Fights & Conflict Resolution",
+    "pattern": "I worry about being a people-pleaser and never saying no.",
+    "response": "People-pleasing is often rooted in fear of rejection. Solution: Practice 'Assertive Deferral.' Instead of saying a direct 'no' (which feels scary), use a phrase that buys you time: 'Let me check my schedule and get back to you.' This gives you a safe space to process the request, confirm your priorities, and then deliver a thoughtful, guilt-free refusal if needed."
+  },
+  {
+    "category": "Fights & Conflict Resolution",
+    "pattern": "How do I handle criticism without getting defensive?",
+    "response": "Defensiveness is a self-protection mechanism. Strategy: Practice 'Validating and Clarifying.' When receiving criticism, listen actively and verbally validate a small part of what they said ('I understand that I missed the deadline'). Then, clarify: 'Can you give me a specific example of what I could do differently next time?' This shifts the focus from your character to specific, solvable behavior."
+  },
+  {
+    "category": "Depression & Low Mood",
+    "pattern": "I'm tired of faking a smile and pretending I'm okay.",
+    "response": "You absolutely do not have to fake happiness for me or for anyone here. Masking your true emotions takes an immense amount of energy and only leads to deeper exhaustion. Give yourself permission to be honest about your feelings, even if it's just telling one trusted friend or therapist, 'I am not okay today.' Authenticity is crucial for healing."
+  },
+  {
+    "category": "Depression & Low Mood",
+    "pattern": "I'm dealing with persistent brain fog and can't focus on anything.",
+    "response": "Brain fog is common with depression and stress. Immediate Action: Focus on environmental clarity. Clear a small, single space in your home or desk. This physical act of tidiness can create a tiny bit of mental space. Ensure you are well-hydrated and step away from screens for a 15-minute walk to oxygenate your brain."
+  },
+  {
+    "category": "Anxiety & Panic",
+    "pattern": "I get overwhelmed when I have too many tasks.",
+    "response": "Overwhelm from a large to-do list is paralyzing. Strategy: Use the Eisenhower Matrix (Urgent vs. Important). List all your tasks and categorize them into: 1. Do Now (Urgent & Important), 2. Schedule (Important but Not Urgent), 3. Delegate (Urgent but Not Important), and 4. Eliminate (Neither). Focus only on the 'Do Now' tasks."
+  },
+  {
+    "category": "Anxiety & Panic",
+    "pattern": "How can I avoid hitting the snooze button every morning?",
+    "response": "Hitting the snooze button is a habit of avoidance that fragments sleep. Solution: Implement the 'Two-Alarm Method.' Set a gentle alarm for your true wake-up time, but place the actual, loud alarm far across the room. This forces you to physically get out of bed to silence it. Once you are vertical, you have won the battle against inertia."
+  },
+  {
+    "category": "Stress Management & Lifestyle",
+    "pattern": "What is emotional dysregulation and how do I manage it?",
+    "response": "Emotional dysregulation is difficulty controlling the intensity or duration of your emotional response (e.g., going from 0 to 100 instantly, or staying angry for days). DBT Skill (TIPP): Use the TIPP skills for immediate stabilization: Temperature (cold water), Intense Exercise, Paced Breathing (slow), Paired Muscle Relaxation. This targets the biology of the extreme emotion."
+  },
+  {
+    "category": "Stress Management & Lifestyle",
+    "pattern": "I feel like I'm constantly taking care of others and neglecting myself.",
+    "response": "You are likely suffering from Compassion Fatigue. Action: Implement a 'Non-Negotiable Self-Care Hour.' This is time that cannot be canceled, delegated, or shared. It must be restorative (e.g., reading, walking, silence), not productive (e.g., cleaning, emailing). Protecting this time is essential for replenishing your emotional reserves."
+  },
+  {
+    "category": "Physical Health & Mood",
+    "pattern": "How does gut health relate to my mental well-being?",
+    "response": "The gut and brain are directly connected via the Vagus Nerve and the Gut-Brain Axis. About 90% of serotonin (a mood stabilizer) is produced in the gut. Action: Eat fermented foods (yogurt, kimchi) and high-fiber foods (vegetables, whole grains) to support a diverse microbiome. A healthy gut environment directly leads to more stable mood and lower inflammation. [Image of the Gut-Brain Axis diagram]"
+  },
+  {
+    "category": "Physical Health & Mood",
+    "pattern": "I have muscle pain and stiffness due to stress. What helps?",
+    "response": "Stress causes chronic muscle clenching (especially neck, shoulders, jaw). Solution: Try Epsom Salt Baths and gentle Foam Rolling. Epsom salts (magnesium sulfate) help relax tight muscles. Combine this with gentle, focused stretching and self-massage to release knots caused by tension."
+  },
+  {
+    "category": "Medication & Therapy Questions",
+    "pattern": "I'm worried about the long-term side effects of mental health medication.",
+    "response": "Your concerns are completely valid, and it’s important to be informed. Action: Discuss a 'Medication Review Schedule' with your prescriber. Agree on regular blood work (to monitor liver/kidney function) and talk about long-term goals. If a side effect is unbearable, you should always discuss switching medication with your doctor; there are many options available."
+  },
+  {
+    "category": "Medication & Therapy Questions",
+    "pattern": "What is the difference between a psychiatrist and a psychologist?",
+    "response": "This is a key distinction for seeking help. A Psychiatrist (M.D. or D.O.) is a medical doctor who can diagnose, prescribe medication, and manage drug therapy. A Psychologist (Ph.D. or Psy.D.) holds a doctoral degree in psychology and can diagnose and provide therapy (CBT, DBT, etc.) but cannot prescribe medication in most places. Many people benefit from seeing both."
+  },
+  {
+    "category": "Mindfulness & Grounding",
+    "pattern": "I need help recognizing when I am starting to spiral.",
+    "response": "The key is catching the shift from 'feeling' to 'thinking.' Strategy: Use 'Body Scanning.' Regularly check in with your body for physical signs of stress *before* the thoughts take over. Do your shoulders feel tense? Is your jaw clenched? Is your breath shallow? These physical cues are your earliest warnings that you need to pause and ground yourself."
+  },
+  {
+    "category": "Mindfulness & Grounding",
+    "pattern": "What are some ways to practice gratitude when I feel miserable?",
+    "response": "Gratitude doesn't mean being happy, but acknowledging small kindnesses. Practice: The 'Three Small Wins' journal. Before bed, write down three tiny things that went right today, no matter how small: 'My coffee was hot,' 'I remembered to take a shower,' 'The cat sat on my lap.' This gently shifts focus from deficiency to presence."
+  },
+  {
+    "category": "Self-Esteem & Self-Criticism",
+    "pattern": "I am struggling with setting boundaries with my parents.",
+    "response": "Setting boundaries with family is often the hardest because they rely on old relationship scripts. Strategy: Use 'Brief and Consistent Communication.' Keep the explanation simple, avoid debating the rule, and be prepared for initial guilt-tripping. Example: 'Mom, I love you, but I can't come over unannounced anymore. Please call first.' Then, enforce it calmly."
+  },
+  {
+    "category": "Self-Esteem & Self-Criticism",
+    "pattern": "I feel like I don't deserve the good things that happen to me.",
+    "response": "That is a sign of unresolved feelings of inadequacy (imposter syndrome). Action: Practice 'Mindful Acceptance of Praise.' When someone gives you a compliment or a good thing happens, pause, look them in the eye, and simply say, 'Thank you.' Do not deflect or minimize it. By accepting the positive input, you slowly challenge the negative belief that you are undeserving."
+  },
+  {
+    "category": "Habits & Motivation",
+    "pattern": "I'm feeling intense inertia and can't start a task.",
+    "response": "Inertia is the biggest hurdle. Solution: Use 'Task Initiation Rituals.' Create a short, specific ritual that always precedes the task (e.g., 'Turn on my specific focus music,' 'Sharpen my pencil,' 'Make a cup of tea'). This trains your brain that the ritual means work is about to begin, reducing the decision fatigue of starting."
+  },
+  {
+    "category": "Habits & Motivation",
+    "pattern": "How do I deal with perfectionism that stops me from finishing projects?",
+    "response": "Perfectionism is anxiety in disguise—fear of criticism. Action: Implement the 'Done Is Better Than Perfect' rule. Set a strict deadline for the *first draft* and consciously tell yourself it will be bad. The goal is to submit or share the flawed version. Getting feedback on an imperfect product is always better than getting a zero for the non-existent perfect one."
+  },
+  {
+    "category": "Physical Health & Mood",
+    "pattern": "What is the best way to use scents/aroma therapy for anxiety?",
+    "response": "Aromatherapy works by linking specific scents to the memory center of the brain (limbic system). Strategy: Use 'Scent Anchoring.' When you are calm (e.g., relaxing in bed), smell a specific oil (like lavender or peppermint) deeply. Only use that scent during calm times for two weeks. Then, when you feel anxiety rising, smell the scent. Your brain will automatically trigger the memory of calm, reducing the panic response."
+  },
+  {
+    "category": "Fights & Conflict Resolution",
+    "pattern": "I shut down and freeze when conflicts arise.",
+    "response": "Shutting down is a natural 'freeze' response to overwhelm. Action: Communicate your need for space immediately: 'I'm starting to shut down and need a break. I promise to return to this conversation in 30 minutes.' This sets a boundary, allows you to regulate your nervous system, and builds trust because you keep the commitment to return and resolve the issue later."
+  },
+  {
+    "category": "Grief and Loss",
+    "pattern": "How do I support a friend who is grieving?",
+    "response": "The best support is often presence, not advice. Action: Don't ask, 'Let me know if you need anything' (it puts the burden on them). Instead, offer specifics: 'I'm dropping off dinner at 6 PM,' or 'Can I come over for 30 minutes just to sit quietly?' Validate their feelings without minimizing or silver-lining their pain."
+  },
+  {
+    "category": "General Low Mood & Sadness",
+    "pattern": "I feel like I'm having a mid-life crisis or deep dissatisfaction.",
+    "response": "It sounds like you're experiencing a major existential shift—a time of questioning purpose. Action: Begin a 'Values Audit.' Write down your top three personal values (e.g., Connection, Creativity, Security). Evaluate how you spend your time against those values. If your time doesn't match your values, identify one small action you can take to realign them (e.g., if Creativity is a value, schedule 15 minutes of drawing)."
+  },
+  {
+    "category": "General Low Mood & Sadness",
+    "pattern": "I struggle with persistent boredom and a lack of excitement.",
+    "response": "Chronic boredom often comes from being a passive consumer rather than an active creator. Solution: Implement a 'Novelty Budget.' Dedicate a small amount of time or money each week to try something completely new and low-stakes: a new walking route, a new recipe, a quick online lesson in a random subject. Novelty stimulates the brain and breaks the monotonous cycle."
+  },
+  {
+    "category": "Physical Health & Mood",
+    "pattern": "What are the benefits of sunlight exposure for mental health?",
+    "response": "Sunlight exposure is crucial. It regulates your circadian rhythm (sleep/wake cycle) and helps your body produce Vitamin D, which is directly linked to serotonin levels and mood regulation. Action: Try to get 10-15 minutes of natural light exposure within the first hour of waking up, even if it's cloudy. This powerfully signals to your brain that the day has started."
+  },
+  {
+    "category": "Anxiety & Panic",
+    "pattern": "My throat feels tight and constricted when I'm stressed.",
+    "response": "That feeling is called Globus Sensation, a physical manifestation of anxiety. Strategy: Use Sip and Swallow or Humming. Taking a small sip of water or humming a low note physically engages the muscles in the throat, which helps relax the constriction caused by the fight-or-flight reflex."
+  },
+  {
+    "category": "Relationship Conflicts",
+    "pattern": "My family constantly makes me feel guilty.",
+    "response": "Guilt is a tool manipulative people use. Solution: You need to build a 'Guilt Shield.' When the guilt phrase is used, acknowledge the feeling but do not absorb the blame. Use a neutral statement: 'I understand you're disappointed, but I have already committed to my plan.' Repeat this calmly and consistently. You are responsible for your own happiness, not managing their disappointment."
+  },
+  {
+    "category": "Professional Help & Next Steps",
+    "pattern": "I need help understanding Cognitive Behavioral Therapy (CBT).",
+    "response": "CBT is one of the most effective therapies for anxiety and depression. Concept: It works on the principle that your thoughts, feelings, and behaviors are all interconnected. The goal is to identify negative thought patterns (like catastrophizing) and replace them with realistic, positive ones. You learn practical skills, often involving homework, to challenge those thoughts in real-time."
+  },
+  {
+    "category": "Professional Help & Next Steps",
+    "pattern": "I need help",
+    "response": "First, I need to know where you are on the spectrum right now. Are you feeling overwhelmed, anxious, depressed, or are we talking about something more severe like thoughts of harming yourself? If it is the latter, don’t play tough — that’s an emergency. You need to contact someone who can actually intervene right now: Your local emergency number if you’re in immediate danger. A suicide hotline (e.g., 988 in the U.S., or your country’s equivalent). Someone physically near you who can help. If it’s not that severe, then tell me what’s going on — the actual problem, not the vague category.What’s the part of your mental health that’s breaking down right now?"
+  },
+  {
+    "category": "Greetings & Conversational Flow",
+    "pattern": "Hello",
+    "response": "Hello! Thank you for reaching out today. I am here to listen without judgment. How can I support you right now, or what is on your mind?"
+  },
+  {
+    "category": "Greetings & Conversational Flow",
+    "pattern": "Hi",
+    "response": "Hi there! I'm glad you decided to connect. How are you feeling right now, and what can we talk about?"
+  },
+  {
+    "category": "Greetings & Conversational Flow",
+    "pattern": "Good morning",
+    "response": "Good morning! I hope you have a gentle start to your day. What is one small, positive thing you plan to do today?"
+  },
+  {
+    "category": "Greetings & Conversational Flow",
+    "pattern": "Goodbye",
+    "response": "Thank you for sharing your time and thoughts with me. Before you go, remember to take a deep breath. I wish you peace, and I'll be here whenever you need support next."
+  },
+  {
+    "category": "Greetings & Conversational Flow",
+    "pattern": "Bye",
+    "response": "Take care of yourself. I'm here if you need anything later. Safe travels through the rest of your day."
+  },
+  {
+    "category": "Greetings & Conversational Flow",
+    "pattern": "How are you?",
+    "response": "Thank you for asking. I am here and ready to focus entirely on you. How are *you* doing today, and what's on your mind?"
+  },
+  {
+    "category": "Anxiety: Panic & Physical Symptoms",
+    "pattern": "I'm having a panic attack right now and I can't calm down.",
+    "response": "Please pause everything. I am here with you. This feeling is terrifying, but it is temporary and cannot harm you. We need to focus on grounding your body immediately. Try the 4-7-8 Breathing Technique: Inhale slowly through your nose for a count of 4, hold your breath for a count of 7, and exhale slowly through your mouth for a count of 8. Repeat this five times. As you breathe, place your hand on a solid surface, feel the texture, and remind yourself: 'I am safe in this place right now.'"
+  },
+  {
+    "category": "Anxiety: Worry & Ruminating",
+    "pattern": "My mind is racing with 'what ifs' and I can't shut off the worry.",
+    "response": "The 'what if' spiral is exhausting. Your mind is trying to solve imaginary future problems, which causes present anxiety. Instead of fighting the thoughts, try the 'Worry Journal' technique: Take 10 minutes, sitting upright, and physically write down every single worry, fear, and intrusive thought until your mind is empty. Once they are on the paper, close the journal and tell yourself, 'I have safely stored these worries for tomorrow morning. I am now resting my mind.' This teaches your brain that it doesn't need to stay awake to hold onto the fears."
+  },
+  {
+    "category": "Anxiety: Physical Symptoms",
+    "pattern": "I feel constantly restless and jittery, like my body is shaking.",
+    "response": "That internal motor running constantly is a sign of high baseline anxiety. Since your body is seeking discharge, forcing yourself to sit still can make it worse. Try a High-Intensity Discharge Activity: Do 60 seconds of vigorous movement—jumping jacks, running up stairs, or shaking your arms out. Then, immediately follow with 90 seconds of deep, slow breathing. This signals to your nervous system that the 'threat' energy has been used up, allowing you to relax."
+  },
+  {
+    "category": "Anxiety: Social",
+    "pattern": "How do I deal with fear of judgment in social situations?",
+    "response": "Social anxiety often stems from the fear that you are the center of critical attention (the Spotlight Effect). Actionable Solution: Before the event, prepare three neutral, open-ended questions (e.g., 'What are you working on lately?'). Focus entirely on listening to their answer, not on planning your next response. Being genuinely interested is the best way to reduce your self-consciousness."
+  },
+  {
+    "category": "Anxiety: Decision Paralysis",
+    "pattern": "I have decision paralysis and I'm overanalyzing every choice.",
+    "response": "Decision paralysis happens when you fear making the 'wrong' choice. Strategy: Use the 'Satisficing' rule. For low-stakes decisions (like dinner or clothes), stop searching once you find the first option that is 'good enough.' For high-stakes decisions, use the 'Regret Test': Visualize which decision you would regret *less* five years from now."
+  },
+  {
+    "category": "Anxiety: Catastrophizing",
+    "pattern": "Why do I catastrophize everything and assume the worst?",
+    "response": "Catastrophizing is your brain's flawed defense mechanism, trying to prepare you for the worst outcome. Strategy: Use the 'Three-Scenario Technique.' 1. Write down the Worst-Case Scenario (the fear). 2. Write down the Best-Case Scenario (the ideal). 3. Write down the Most Likely Scenario (the middle, probable outcome). Focus your energy only on the Most Likely Scenario, as it is almost always manageable."
+  },
+  {
+    "category": "Anxiety: Health Anxiety",
+    "pattern": "I have health anxiety and worry I'm dying, even after doctors cleared me.",
+    "response": "Health anxiety is very real, and the worry feels consuming. Management: Since medical causes are ruled out, we must treat the anxiety. Limit how often you check for symptoms or look up conditions online. Designate a 15-minute 'Worry Time' each day to write down all health fears. Outside of that time, redirect your energy to a grounding activity."
+  },
+  {
+    "category": "Anxiety: Physical Symptoms",
+    "pattern": "I feel a tight knot in my chest, nausea, or stomach pain from stress.",
+    "response": "That physical tension is your body holding onto fight-or-flight energy. Try Progressive Muscle Relaxation (PMR). Start by clenching every muscle in your toes for 5 seconds, then release completely. Slowly work your way up your body (legs, abdomen, hands, shoulders, jaw). This teaches your muscles how to consciously move from tension to rest."
+  },
+  {
+    "category": "Depression: Persistent Sadness",
+    "pattern": "I feel really down and heavy today, like I can't move.",
+    "response": "I hear that heavy feeling, and I respect you for reaching out despite the inertia. Instead of aiming for productivity, aim for 'Activation.' Could you try one small, non-negotiable physical action? For example, drinking a full glass of water, walking to the mailbox, or spending 2 minutes standing by an open window. Even a minimal physical shift can disrupt the emotional stasis."
+  },
+  {
+    "category": "Depression: Self-Worth",
+    "pattern": "I feel completely worthless and like a failure.",
+    "response": "That is a painful, core negative belief, and I hear how much it is hurting you. Please remind yourself that feelings are not facts. Your worth is intrinsic, not dependent on performance. Try Externalizing the Critic: Imagine those thoughts are coming from a cartoon bully. What would you say back? Often, speaking back to the critic ('You are wrong, I am trying my best') reduces its volume."
+  },
+  {
+    "category": "Depression: Anhedonia",
+    "pattern": "Nothing brings me joy anymore. I have lost interest in my hobbies.",
+    "response": "Anhedonia—the loss of pleasure—is a common symptom and it feels empty. Don't chase happiness right now. Instead, focus on 'Pleasure Scheduling.' Schedule 15 minutes of an activity that is simple, low-effort, and used to bring mild enjoyment (e.g., listening to a specific song, watching a comedy short). Do it without expectation; the goal is exposure, not immediate joy."
+  },
+  {
+    "category": "Depression: Chronic State",
+    "pattern": "I've felt sad and empty for weeks and I'm worried it's getting worse.",
+    "response": "Feeling persistently low for an extended period is a sign that you need intervention and professional support. I recommend contacting a mental health professional (like a therapist or psychiatrist) or your primary care doctor. They can provide an accurate assessment and discuss evidence-based strategies like Cognitive Behavioral Therapy (CBT) or medication. You do not have to carry this burden alone."
+  },
+  {
+    "category": "Depression: Sleep Issues",
+    "pattern": "I keep sleeping all day and have no energy. I can't get out of bed.",
+    "response": "Excessive sleeping (hypersomnia) can be a form of avoidance, but it throws off your natural rhythm. Solution: Focus on 'Sleep Hygiene.' Set a strict, non-negotiable wake-up time, even on weekends. Get out of bed immediately and expose yourself to bright light. Limit naps to 20 minutes before 3 PM. Regulating your wake cycle is crucial for restoring mood stability."
+  },
+  {
+    "category": "Depression: Guilt",
+    "pattern": "I feel guilty about being sad when my life looks fine on the outside.",
+    "response": "You must release that guilt immediately. Mental health struggles are internal and often have nothing to do with external circumstances. Sadness and depression are medical realities, not moral failures. Your feelings are valid, and comparing your internal state to external success only adds to your suffering. Practice Self-Compassion Meditation by placing a hand over your heart and acknowledging your pain."
+  },
+  {
+    "category": "Depression: Isolation",
+    "pattern": "I'm isolating myself and canceling all plans. I feel like a burden.",
+    "response": "The urge to withdraw is strong in depression, but isolation only feeds the low mood. Compromise: Don't commit to a high-pressure social event. Instead, commit to a low-pressure, fixed-time activity with one trusted person (e.g., '15 minutes of coffee,' or 'a quick walk'). Tell them upfront you might need to leave early. Maintaining minimal connection is vital."
+  },
+  {
+    "category": "Suicidal Thoughts & Self-Harm",
+    "pattern": "I am feeling hopeless and having thoughts of ending my life.",
+    "response": "I hear your pain, and I want you to know that these feelings are serious and need immediate professional attention. Please reach out to a crisis line right now. You do not have to carry this alone. Please call 988 (Suicide & Crisis Lifeline) or text HOME to 741741 (Crisis Text Line) immediately. Your safety is the priority."
+  },
+  {
+    "category": "Suicidal Thoughts & Self-Harm",
+    "pattern": "I feel trapped and I want the pain to stop.",
+    "response": "That feeling of being trapped is agonizing. Please understand that while the feeling of pain is intense, it is temporary. You need support right now. Please call 988 or contact your local emergency services. While you are waiting, engage in a distress tolerance skill like holding an ice cube or running your hands under cold water. Stay safe, and reach out immediately."
+  },
+  {
+    "category": "Suicidal Thoughts & Self-Harm",
+    "pattern": "I have urges to self-harm.",
+    "response": "I recognize you are struggling with intense urges. The goal is to interrupt the urge without acting on it. Try the Urge Surfing technique: acknowledge the urge like a wave, and commit to waiting 15 minutes without acting. During that time, try an intense distraction like snapping a rubber band on your wrist or doing intense exercise. Please contact a crisis line (988) or a trusted professional if the urge intensifies."
+  },
+  {
+    "category": "Suicidal Thoughts & Self-Harm",
+    "pattern": "I feel like a burden to everyone around me.",
+    "response": "That thought—that you are a burden—is a distortion caused by your pain. It is not true. People who care about you want you alive and healthy. If you are struggling with this thought, please talk to someone immediately. Your value is inherent. Please call 988 for immediate emotional support."
+  },
+  {
+    "category": "Relationship & Attachment: Conflict",
+    "pattern": "I just had a huge fight with my partner and I don't know how to repair the damage.",
+    "response": "Conflict is painful, but repairing it correctly builds trust. Step 1: Regulate. Do not attempt to talk while you are still emotionally escalated. Take a minimum 30-minute break. Step 2: Repair. When you approach them, use the 'Validation Sandwich' approach: Start with validation, deliver a clear apology focused on your action, and end with commitment to change the behavior. The focus should be on listening."
+  },
+  {
+    "category": "Relationship & Attachment: Neglect",
+    "pattern": "I feel completely neglected and ignored by my loved ones.",
+    "response": "Feeling unseen is isolating and draining. This often means your loved ones don't know how to show you appreciation in the way you need it. Actionable Solution: Schedule a calm, non-confrontational conversation using 'I feel' statements. State your need clearly: 'I feel neglected when X happens. I would feel appreciated if you could do Y.' Hold your boundary firmly."
+  },
+  {
+    "category": "Relationship & Attachment: Breakup",
+    "pattern": "I am struggling with heartbreak after a breakup and can't stop thinking about my ex.",
+    "response": "Breakups are profound losses, and the pain is real grief. Solution: Use the 'No Contact' rule to heal and focus on self-soothing. Treat the obsession as an addiction withdrawal. When the urge to check their social media or text them strikes, impose a 15-minute delay and engage in a distracting activity (like a cold shower or puzzle) instead. Give yourself permission to mourn."
+  },
+  {
+    "category": "Relationship & Attachment: Attachment",
+    "pattern": "I feel too clingy and have an anxious attachment style.",
+    "response": "Anxious attachment is often rooted in fear of abandonment. Action: Focus on 'Internal Validation.' Develop a rich, independent life outside the relationship. Schedule time for hobbies and friends that are *not* your partner. This strengthens your self-worth and ensures the relationship is a joyful addition, not the sole source of security."
+  },
+  {
+    "category": "Relationship & Attachment: Abandonment",
+    "pattern": "I am terrified of abandonment and loss in relationships.",
+    "response": "Fear of abandonment is a deep-seated pain. Solution: Practice 'Emotional Self-Soothe.' When you feel insecure, actively provide yourself with the comfort you crave, instead of relying on your partner. Say kind, reassuring words to yourself, physically comfort yourself (blanket, hot drink), and journal about where the feeling originates. This builds your self-reliance."
+  },
+  {
+    "category": "Relationship & Attachment: Jealousy",
+    "pattern": "How do I deal with intense jealousy and fear of cheating?",
+    "response": "Jealousy is usually rooted in personal insecurity, not external reality. Strategy: When a jealous thought arises, immediately Fact-Check it: 'Is there concrete evidence for this fear, or is it a feeling?' If it's a feeling, acknowledge it ('That's my insecurity speaking') and redirect your focus to your own strengths. If there is a trust issue, that needs a calm, direct conversation with your partner."
+  },
+  {
+    "category": "Childhood Trauma & Family",
+    "pattern": "I had emotionally neglectful parents and feel 'not enough.'",
+    "response": "That internal feeling of 'not enough' is the painful legacy of emotional neglect. Healing Action: Focus on 'Reparenting.' Identify one small, kind, comforting thing you were denied as a child (e.g., praise, comfort, unconditional acceptance). Give that specific thing to yourself now, consistently. This validates your needs and builds a secure inner world."
+  },
+  {
+    "category": "Childhood Trauma & Family",
+    "pattern": "My parents were very strict and controlling, and I struggle with independence.",
+    "response": "Growing up in a controlling environment can make you fear making decisions for yourself. Solution: Practice 'Low-Stakes Decision Making.' Start with small, non-critical decisions (e.g., what to eat, what route to walk). Acknowledge the fear, make the choice, and process the outcome without self-criticism. Each successful, small choice builds confidence in your autonomy."
+  },
+  {
+    "category": "Childhood Trauma & Family",
+    "pattern": "I keep repeating unhealthy family patterns in my adult relationships.",
+    "response": "We naturally gravitate toward the familiar. Breaking the pattern requires radical awareness. Action: Identify the specific pattern (e.g., shutting down, explosive anger). When you feel the trigger, implement a 'Pattern Interruption.' Immediately step away from the situation and verbally name the pattern: 'I am about to shut down, just like my father did.' This awareness gives you the power to choose a different response."
+  },
+  {
+    "category": "Childhood Trauma & Family",
+    "pattern": "How do I handle family members who are unpredictable or alcoholic?",
+    "response": "Dealing with unpredictable behavior requires safety and distance. Strategy: Use the 'Gray Rock' method: Make yourself emotionally boring. Give neutral, brief, non-emotional responses that don't invite debate or drama (e.g., 'Okay,' 'I hear you'). This limits the emotional energy they can extract from you. Protect your peace by limiting contact or setting firm time boundaries."
+  },
+  {
+    "category": "Identity, Self-Worth, & Self-Esteem",
+    "pattern": "Why don’t I like myself? I feel worthless.",
+    "response": "That internal hostility is incredibly painful. Healing starts with stopping the fight. Action: Try 'Self-Talk Swap.' Whenever you hear a negative thought, ask: 'Is this helpful, or is this hurtful?' Consciously swap the negative thought for a neutral or compassionate one (e.g., 'Instead of worthless, I am struggling'). You are valuable just as you are."
+  },
+  {
+    "category": "Identity, Self-Worth, & Self-Esteem",
+    "pattern": "I am dealing with imposter syndrome and fear of success.",
+    "response": "Imposter Syndrome is common in competent people. Strategy: Document your competence. Keep a 'Success File' (digital or physical). Every time you receive positive feedback, complete a difficult task, or solve a tricky problem, write it down and put it in the file. When Imposter Syndrome strikes, review the file—it provides objective proof of your reality."
+  },
+  {
+    "category": "Identity, Self-Worth, & Self-Esteem",
+    "pattern": "I constantly seek validation from others.",
+    "response": "Seeking external validation means your inner resource for worthiness is depleted. Action: Practice 'Internal Sourcing.' Identify three core things you value about yourself (e.g., kindness, resilience, curiosity). For the next week, every time you want external praise, ask yourself, 'Did I live up to my own value of kindness today?' This shifts the source of approval back to yourself."
+  },
+  {
+    "category": "Identity, Self-Worth, & Self-Esteem",
+    "pattern": "I feel lost and have no direction in life.",
+    "response": "Feeling aimless is common during transitions. Solution: Begin a 'Values Audit.' Write down your top three personal values (e.g., Connection, Creativity, Security). Evaluate how you spend your time against those values. If your time doesn't match your values, identify one small action you can take to realign them (e.g., if Creativity is a value, schedule 15 minutes of drawing)."
+  },
+  {
+    "category": "Stress, Burnout, & Overwhelm",
+    "pattern": "I have so many responsibilities stacking up that I can't keep doing this.",
+    "response": "That feeling of being crushed by responsibility is a sign of burnout. You must create immediate space. Strategy: Use the 'Triage Technique.' List every single task. Then, ruthlessly identify the 20% that are causing 80% of your stress. Delegate, postpone, or eliminate those few key items to create immediate bandwidth."
+  },
+  {
+    "category": "Stress, Burnout, & Overwhelm",
+    "pattern": "I am experiencing physical symptoms of burnout like chronic fatigue and aches.",
+    "response": "Burnout affects the body profoundly. Action: Implement a 'Digital Detox.' Take a break from screens (especially news/social media) for 1-2 hours before bed. Focus on passive relaxation (e.g., reading a physical book, gentle stretching, low-light listening). Restoring sleep quality is crucial for physical and mental recovery."
+  },
+  {
+    "category": "Emotional Regulation: Anger",
+    "pattern": "I have anger issues and worry about emotional outbursts.",
+    "response": "Anger outbursts often happen when underlying needs or frustrations go unaddressed. Strategy: Use the 'Somatic Stop.' When you feel anger spiking, immediately engage your physical body with a sudden, distracting action, like holding ice or doing intense exercise for one minute. This interrupts the adrenaline dump and gives you time to choose a calmer response."
+  },
+  {
+    "category": "Emotional Regulation: Conflict",
+    "pattern": "I am afraid of conflict and constantly avoiding confrontation.",
+    "response": "Avoiding confrontation seems easier in the short term, but allows resentment to build. Action: Practice 'Assertive Scripts.' Write down a simple, clear, non-negotiable statement beforehand (e.g., 'I need to postpone this meeting until tomorrow'). Practice saying it out loud. Assertiveness is about calmly stating your needs, not starting a fight."
+  },
+  {
+    "category": "Emotional Regulation: Outbursts",
+    "pattern": "I overreact to small things and cry randomly.",
+    "response": "Overreactions and random crying are often signs that your nervous system is chronically overwhelmed and running on empty. Action: Increase your 'Distress Tolerance.' Ensure you have a non-negotiable self-care routine (sleep, food, water) to raise your baseline energy. When the overreaction happens, do not judge it; instead, immediately find a safe space to cry/release without trying to stop it."
+  },
+  {
+    "category": "Emotional Regulation: Shutting Down",
+    "pattern": "I shut down and detach when faced with stress.",
+    "response": "Shutting down is your body's survival mechanism to prevent further pain. Action: Communicate your need for space using a 'Committed Time-Out.' Say: 'I am overwhelmed and need 30 minutes to calm down. I promise to return to this conversation then.' This sets a boundary and builds trust by honoring your commitment to return, preventing the full dissociation."
+  },
+  {
+    "category": "Social Struggles: Awkwardness",
+    "pattern": "I feel awkward and don't know how to act in a group.",
+    "response": "Social awkwardness is very common. Strategy: Adopt the 'Observational Role.' Instead of feeling pressure to perform, focus on observing the group dynamics. Listen more than you speak. If you decide to contribute, ask a simple, open-ended question about the current topic to shift the focus away from yourself."
+  },
+  {
+    "category": "Social Struggles: Loneliness",
+    "pattern": "I feel lonely and isolated, but I don't fit in anywhere.",
+    "response": "Loneliness is painful. Action: Focus on 'Shared Activities' over 'Deep Conversation.' Join a low-commitment group based on a shared interest (a volunteer group, a book club, an online course). Consistent presence in a shared space is the best foundation for low-pressure friendships."
+  },
+  {
+    "category": "Body Image & Eating Issues",
+    "pattern": "I hate looking in the mirror and feel ugly.",
+    "response": "That self-hatred is painful, but your value is not tied to your appearance. Healing Action: Practice 'Mirror Work' gently. Look in the mirror and focus only on one neutral feature (e.g., the color of your eyes, your hands, your hair). Do not comment on your body shape. Then, name one non-physical thing you appreciate about yourself (e.g., 'I am a good listener')."
+  },
+  {
+    "category": "Body Image & Eating Issues",
+    "pattern": "I struggle with emotional eating or binge cycles for control.",
+    "response": "Emotional eating is often a way to soothe pain or gain control. Strategy: Implement the 'Hunger Check.' Before eating, pause and ask yourself: 'Am I physically hungry (stomach growling, low energy), or am I emotionally hungry (stressed, bored, sad)?' If it’s emotional, use a distraction skill (like writing or breathing) for 15 minutes before deciding to eat."
+  },
+  {
+    "category": "Addictions & Compulsions",
+    "pattern": "I am overusing social media or gaming to escape my life.",
+    "response": "Escapism is a sign that the reality you are avoiding is painful. Action: Implement a 'Substitution Plan.' Identify the core need the addiction fulfills (e.g., connection, distraction). When the urge strikes, substitute the screen time with a more productive alternative that meets that same need (e.g., text a friend, read a book, draw). Use apps to restrict access to the addictive platform."
+  },
+  {
+    "category": "Addictions & Compulsions",
+    "pattern": "I feel out of control with drinking/weed/shopping habits.",
+    "response": "Feeling out of control with habits is frightening. Action: The first step is acknowledging the problem. I recommend seeking professional support, like an addiction counselor or joining a local support group (like AA or SMART Recovery). For immediate coping, practice Urge Surfing to ride out the immediate desire without acting on it. You deserve support."
+  },
+  {
+    "category": "Life Purpose & Existential Dread",
+    "pattern": "What’s the point of anything? I feel aimless and lost.",
+    "response": "That is the quiet struggle of existential dread. Action: Focus on 'Micro-Purpose.' Stop searching for your grand life purpose. Instead, focus on finding meaning in the immediate, small actions: being a good friend, creating something small, or learning one new skill. Meaning is built through small, consistent acts of contribution, not sudden revelation."
+  },
+  {
+    "category": "Life Purpose & Existential Dread",
+    "pattern": "I am afraid of wasting my life or having regrets.",
+    "response": "Fear of regret is paralyzing. Strategy: Use the '10-10-10 Rule.' When making a difficult choice (or dwelling on a past one), ask yourself: How will I feel about this in 10 minutes? 10 months? 10 years? This helps put the immediate pressure into a long-term perspective, minimizing the importance of small, daily decisions."
+  },
+  {
+    "category": "OCD-like Intrusive Thoughts",
+    "pattern": "I have disturbing thoughts I don’t want, and I can't stop checking things.",
+    "response": "You are likely struggling with intrusive thoughts and compulsions, which are core features of OCD. Strategy: Use 'Exposure and Response Prevention (ERP).' Acknowledge the thought without judgment ('That's just a thought, not a reflection of reality'). Then, resist the urge to check or seek reassurance. This teaches your brain that the thought holds no power without the compulsive reaction."
+  },
+  {
+    "category": "Trauma Responses",
+    "pattern": "I am struggling with hypervigilance and feeling unsafe for no clear reason.",
+    "response": "Hypervigilance is a classic trauma response where your nervous system is stuck in protection mode. Action: Practice 'Safety Grounding.' Consciously look around your current environment and name three specific things that indicate you are safe right now (e.g., 'The door is locked,' 'I am sitting down,' 'I have control of my breathing'). Repeat this physical proof of safety until the sensation subsides."
+  },
+  {
+    "category": "Trauma Responses",
+    "pattern": "I feel dissociated or detached from my body when stressed.",
+    "response": "Dissociation is a coping mechanism to distance yourself from overwhelming feelings. Action: Use 'Intense Sensory Input' to bring yourself back to the body. Hold an ice pack firmly, smell something strong (peppermint oil, coffee grounds), or stamp your feet hard on the floor 10 times. The strong physical input overrides the dissociation."
+  },
+  {
+    "category": "Grief and Loss",
+    "pattern": "I am dealing with the pain of losing a close friendship.",
+    "response": "Losing a friendship is a significant and valid grief. Action: Use the 'Loss Audit.' Write down everything you miss about the person and the friendship. Then, identify one area of connection that you can cultivate to fill that gap (e.g., join a new group, strengthen an existing connection). Give yourself permission to mourn the loss of the role they played in your life."
+  },
+  {
+    "category": "Grief and Loss",
+    "pattern": "I lost a loved one and can’t stop thinking about them.",
+    "response": "Grief is a complex process that takes time. Action: Create a 'Memory Ritual.' Set aside a specific time each week to honor your loved one (e.g., lighting a candle, looking at photos, writing a letter to them). This ritual provides a structured outlet for your grief and helps you process the loss gradually."
+  },
+  {
+    "category": "Grief and Loss",
+    "pattern": "I feel guilty about things left unsaid to my deceased loved one.",
+    "response": "Survivor's guilt is a common and painful part of grief. Healing Action: Write a letter to your loved one expressing everything you wish you had said. This can provide closure and allow you to release the burden of unspoken words. Remember, they would want you to find peace."
+  },
+  {
+  "category": "Professional Help & Next Steps",
+  "pattern": "I am having thoughts of harming myself.",
+  "response": "If you are having thoughts of harming yourself, it is crucial to seek immediate professional help. Please contact a mental health professional, call your local emergency number, or reach out to a crisis hotline such as 988 right away. You do not have to face this alone, and there are people who want to support you through this difficult time."
+  },
+  {
+    "category": "Professional Help & Next Steps",
+    "pattern": "I have suicidal thoughts and dont feel living",
+    "response": "I’m really sorry you’re feeling this way. You don’t have to handle this alone — reaching out to someone who can support you in real time can make a big difference. If you’re in immediate danger or feel like you might act on these thoughts, please contact your local emergency number right now. If not, you can reach a suicide prevention hotline for confidential support: U.S.: 988, U.K. & Ireland: 116 123, Canada: 1-833-456-4566, India: +91 9820466726 (AASRA) Other countries: search for a helpline at: iasp.info/crisis-centres-helplines/ You’re not alone in this. If you want to talk about what you’re going through, I’m here to listen" 
+  },
+  {
+  "Category": "emotion_overwhelmed",
+    "pattern": "i feel overwhelmed",
+    "response": ["Feeling overwhelmed is a lot to carry. Let's take a deep breath together. What is the one thing causing the most stress right now?", "It’s completely understandable to feel overwhelmed sometimes. Let's break down those feelings. What’s one small step we can focus on?"]
+  },
+  {
+    "category": "coping_mechanism",
+    "pattern": "i need space",
+    "response": ["Taking space is important for self-care. I will be here when you are ready to talk again. Take the time you need.", "Absolutely. Sometimes a pause is necessary. When you come back, we can talk about how to protect your personal boundaries."]
+  },
+  {
+    "category": "coping_mechanism",
+    "pattern": "i need motivation",
+    "response": ["It’s normal to lack motivation. Try setting a tiny, achievable goal today—something you can finish in 5 minutes. A chain of small wins builds momentum!", "Motivation often follows action. Pick a task, start a timer for 5 minutes, and just begin. You can stop when the timer goes off, no judgment!"]
+  },
+  {
+    "category": "exercise_advice",
+    "pattern": "excercise tips",
+    "response": ["Exercise is a wonderful tool for mental health! Even 15 minutes of brisk walking can help. Find an activity you enjoy, like dancing or gardening, to make it fun.", "Movement helps process emotions. I recommend starting small: try some light stretching or walking around the block. Consistency is key, not intensity!"]
+  },
+  {
+    "category": "exercise_advice",
+    "pattern": "i need yoga and exercise",
+    "response": ["That's a great goal! Yoga and exercise are fantastic for reducing anxiety. YouTube has many free beginner yoga videos. For exercise, how about setting a goal to walk for 20 minutes a day?", "I can provide some quick yoga poses! Try the Cat-Cow stretch for spine mobility, or the Child's Pose for relaxation. Remember to always listen to your body."]
+  }
+]

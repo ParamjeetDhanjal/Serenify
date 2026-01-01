@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Appointment</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background: #f4f6fb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 420px;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            margin-top: 0;
+            text-align: center;
+            color: #1f2937;
+        }
+
+        .professional-name {
+            text-align: center;
+            font-weight: 600;
+            color: #4f46e5;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 14px;
+            color: #374151;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #d1d5db;
+            font-size: 14px;
+        }
+
+        textarea {
+            resize: none;
+            height: 80px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #4f46e5;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #4338ca;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .error {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .success {
+            background: #dcfce7;
+            color: #166534;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+    <h2>Book Appointment</h2>
+
+    <div class="professional-name">
+        With {{ professional.name }}
+    </div>
+
+    {% if message %}
+        <div class="message error">
+            {{ message }}
+        </div>
+    {% endif %}
+
+    <form method="POST">
+        <label>Full Name</label>
+        <input type="text" name="full_name" value="{{ user.username }}" required>
+
+        <label>Mobile Number</label>
+        <input type="tel" name="mobile" pattern="[0-9]{10}" placeholder="10-digit number" required>
+
+        <label>Date</label>
+        <input
+  type="date"
+  name="appointment_date"
+  required
+  min="{{ date.today().isoformat() }}"
+>
+
+
+        <label>Time Slot</label>
+        <select name="time_slot" required>
+            <option value="">Select a slot</option>
+            <option value="10:00 - 11:00">10:00 - 11:00</option>
+            <option value="11:00 - 12:00">11:00 - 12:00</option>
+            <option value="12:00 - 01:00">12:00 - 01:00</option>
+            <option value="02:00 - 03:00">02:00 - 03:00</option>
+            <option value="03:00 - 04:00">03:00 - 04:00</option>
+        </select>
+
+        <label>Notes (optional)</label>
+        <textarea name="notes" placeholder="Any extra details..."></textarea>
+
+        <button type="submit">Confirm Booking</button>
+    </form>
+    {% if success %}
+    <div class="message success">
+        {{ success }}
+    </div>
+{% endif %}
+</div>
+<a href="{{url_for('home')}}">BAck to home</a>
+</body>
+</html>

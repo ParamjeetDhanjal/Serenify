@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compassion Bot</title>
+<style>
+    :root {
+        /* Define a calming color palette (Kept the same) */
+        --primary-color:#5fa393 ;
+        --secondary-color: #B2D8D8;
+        --background-color: #f7f9fc;
+        --surface-color: #ffffff;
+        --text-color: #3C4858;
+        --header-color: #5fa393;
+        --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
+        --radius-large: 16px;
+        --radius-small: 8px;
+    }
+
+    body {
+        font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--background-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        color: var(--text-color);
+    }
+
+    .chat-container {
+        /* *** KEY CHANGES START HERE *** */
+        width: 90%; /* Increased width percentage */
+        max-width: 1000px; /* Set a new, wider maximum width for very large screens */
+        height: 95vh; /* Increased height percentage */
+        /* *** KEY CHANGES END HERE *** */
+
+        background-color: #5fa393;
+        box-shadow: var(--shadow-light);
+        border-radius: var(--radius-large);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        transition: box-shadow 0.3s ease;
+    }
+
+    .chat-header {
+        background-color: var(--header-color);
+        color: white;
+        padding: 20px 15px;
+        text-align: center;
+        position: relative;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+    }
+
+    .chat-header h1 {
+        margin: 0;
+        font-size: 1.6rem;
+        font-weight: 600;
+    }
+
+    .chat-header p {
+        margin: 5px 0 0 0;
+        font-size: 0.9rem;
+        opacity: 0.9;
+    }
+
+    .back-link {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: white;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: opacity 0.2s;
+    }
+
+    .back-link:hover {
+        opacity: 0.8;
+    }
+
+    .chat-history {
+        flex-grow: 1;
+        padding: 20px 15px;
+        overflow-y: auto;
+        background-color: var(--surface-color);
+        display: flex;
+        flex-direction: column;
+        scroll-behavior: smooth;
+    }
+
+    /* Scrollbar styling for a cleaner look (optional, but nice) */
+    .chat-history::-webkit-scrollbar {
+        width: 6px;
+    }
+    .chat-history::-webkit-scrollbar-thumb {
+        background-color: #d1d9e6;
+        border-radius: 3px;
+    }
+
+    .message {
+        display: flex;
+        margin-bottom: 18px;
+        animation: fadeIn 0.3s ease-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .message p {
+        /* Reduced max-width to keep messages readable on wider screens */
+        max-width: 65%;
+        padding: 12px 18px;
+        border-radius: 20px;
+        line-height: 1.5;
+        word-wrap: break-word;
+        font-size: 0.95rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        transition: all 0.2s ease-out;
+    }
+
+    .user-message {
+        justify-content: flex-end;
+    }
+
+    .user-message p {
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 20px 20px 4px 20px;
+    }
+
+    .bot-message {
+        justify-content: flex-start;
+    }
+
+    .bot-message p {
+        background-color: var(--secondary-color);
+        color: var(--text-color);
+        border: 1px solid #e0e6ed;
+        border-radius: 20px 20px 20px 4px;
+    }
+
+    .chat-input-form {
+        display: flex;
+        padding: 15px;
+        border-top: 1px solid #e0e0e0;
+        background-color: var(--surface-color);
+        align-items: center;
+    }
+
+    .chat-input-form input {
+        flex-grow: 1;
+        padding: 12px 18px;
+        border: 1px solid #ccc;
+        border-radius: 25px;
+        margin-right: 10px;
+        font-size: 1rem;
+        outline: none;
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .chat-input-form input:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 2px rgba(93, 156, 236, 0.2);
+    }
+
+    .send-btn {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 12px 22px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 500;
+        transition: background-color 0.2s, transform 0.1s;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .send-btn:hover {
+        background-color: #518c7e;
+    }
+
+    .send-btn:active {
+        transform: scale(0.98);
+    }
+
+    /* Clear button refinement */
+    .clear-btn {
+        background-color: #ff6b6b;
+        color: white;
+        border: none;
+        padding: 12px 18px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: 500;
+        margin-left: 10px;
+        transition: background-color 0.2s, transform 0.1s;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .clear-btn:hover {
+        background-color: #e55c5c;
+    }
+
+    .clear-btn:active {
+        transform: scale(0.98);
+    }
+
+    /* Ensure the 'a' tag wrapping the button doesn't affect button styles */
+    .chat-input-form a {
+        text-decoration: none;
+    }
+
+    .chat-input-form a button {
+        /* Reset button styles from the link wrapper */
+        display: block;
+    }
+
+</style>
+</head>
+<body>
+    <div class="chat-container">
+        <header class="chat-header">
+            <a href="/" class="back-link">← Home</a>
+            <h1>Compassion Bot</h1>
+            <p>I am here to listen without judgment. Ask me anything.</p>
+        </header>
+
+        <div class="chat-history" id="chatHistory">
+            {% for message in history %}
+                {% if message.speaker == 'user' %}
+                    <div class="message user-message">
+                        <p>{{ message.text }}</p>
+                    </div>
+                {% else %}
+                    <div class="message bot-message">
+                        <p>{{ message.text }}</p>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <form method="POST" action="{{ url_for('chatbot') }}" class="chat-input-form">
+            <input type="text" name="message" placeholder="Type your concern here..." required autocomplete="off">
+            <button type="submit" class="send-btn">Send</button>
+            <a href="{{ url_for('clear_chat') }}"><button type="button" class="clear-btn">Clear Chat</button></a>
+        </form>
+    </div>
+
+    <script>
+        // Auto-scroll to bottom
+        const chatHistory = document.getElementById('chatHistory');
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+    </script>
+</body>
+</html>

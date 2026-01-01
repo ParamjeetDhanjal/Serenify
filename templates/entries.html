@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serenify - Past Entries</title>
+    <style>
+        /*
+         * Serenify - Past Entries CSS (Final Compact Revision)
+         */
+
+        :root {
+            --color-primary: #5fa393; /* Soft green-blue */
+            --color-text-dark: #2d3748;
+            --color-text-medium: #4a5568;
+            --color-bg-light: #f4f7f6;
+            --color-border-light: #e2e8f0;
+        }
+
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--color-bg-light);
+            color: var(--color-text-medium);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Header and Title */
+        .text-3xl {
+            font-size: 2.25rem;
+            color: var(--color-text-dark);
+            margin-bottom: 1.5rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--color-border-light);
+            text-align: center; /* Added for consistency with original HTML class */
+            font-weight: bold; /* Added for consistency with original HTML class */
+        }
+
+        /* Search Form */
+        h3 {
+            font-size: 1.15rem;
+            color: var(--color-text-medium);
+            margin-bottom: 10px;
+        }
+
+        form[action="/past-entries/"] {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        input[type="date"] {
+            padding: 10px;
+            border: 1px solid var(--color-border-light);
+            border-radius: 6px;
+            font-size: 1rem;
+            flex-grow: 1;
+            max-width: 200px;
+        }
+
+        input[type="submit"] {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #4b887a; /* Darker primary color */
+        }
+
+        /* Entry Card Styles */
+        .space-y-6 > * + * {
+            margin-top: 1.5rem; /* Matches space-y-6 class */
+        }
+
+        .diary-entry-card {
+            background-color: #ffffff;
+            border: 1px solid var(--color-border-light);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative; /* Crucial for absolute positioning of the edit form */
+        }
+
+        .diary-entry-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.06);
+        }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center; 
+            border-bottom: 1px dashed var(--color-border-light);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .entry-header h2.text-xl {
+            font-size: 1.25rem;
+            color: var(--color-text-dark);
+            margin: 0;
+            font-weight: 600;
+        }
+
+        /* Control Group (Mood, Edit Toggle, Delete Button) */
+        .entry-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Mood Label */
+        .entry-controls span.text-sm {
+            color: #718096;
+            font-weight: 500;
+            margin-right: 5px;
+        }
+
+        /* Delete Button */
+        form[action*="delete_entry"] .delete-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            line-height: 0;
+        }
+        
+        /* Compact Edit Toggle using <details> and <summary> */
+        details.edit-toggle {
+            display: inline-block;
+        }
+
+        details.edit-toggle summary {
+            /* Style Summary to look like a button/link */
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--color-primary);
+            cursor: pointer;
+            list-style: none; /* Hide default triangle */
+            padding: 5px 10px;
+            border: 1px solid var(--color-primary);
+            border-radius: 4px;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        details.edit-toggle summary:hover {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        /* Style when open */
+        details.edit-toggle[open] summary {
+            background-color: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+        }
+
+
+        /* Wrapper for the form content when open */
+        .edit-form-wrapper {
+            position: absolute;
+            top: 100%;
+            right: 0; 
+            left: 0; /* Ensure it spans the full width of the container */
+            z-index: 10;
+            padding: 20px;
+            margin-top: 10px;
+            background-color: #f7fafc; 
+            border: 1px solid var(--color-primary);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .edit-form-wrapper form {
+            margin: 0;
+        }
+
+        /* Content below header */
+        .entry-content {
+            color: var(--color-text-medium);
+            white-space: pre-wrap;
+            margin-top: 15px;
+            border-left: 3px solid var(--color-primary);
+            padding-left: 15px;
+        }
+
+        /* Textarea and Form Actions */
+        textarea[name="updated_entry"] {
+            width: 100%;
+            height: 120px;
+            padding: 10px;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            resize: vertical;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: flex-end; 
+            gap: 10px;
+        }
+
+        .form-actions button[type="submit"] {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+
+        .form-actions button[type="submit"]:hover {
+             background-color: #4b887a;
+        }
+
+        .form-actions a {
+            color: #718096;
+            text-decoration: none;
+            padding: 8px 0;
+            font-size: 0.9rem;
+            line-height: 1.5; 
+            transition: color 0.3s;
+        }
+
+        .form-actions a:hover {
+            color: var(--color-text-dark);
+            text-decoration: underline;
+        }
+
+        /* No Entries Message */
+        .no-entries {
+            text-align: center;
+            color: #718096;
+            padding: 40px;
+            border: 2px dashed #a0aec0;
+            border-radius: 8px;
+            background-color: #edf2f7;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Your Past Entries</h1>
+        
+        <h3>Search By date-</h3>
+        <form action="/past-entries/" method="POST">
+            <input type="date" name="search">
+            <input type="submit" value="Search">
+        </form>
+        
+        {% if entries %}
+            <div class="space-y-6">
+                {% for entry in entries %}
+                    <div class="diary-entry-card">
+                        <div class="entry-header">
+                            <h2 class="text-xl font-semibold text-gray-700">{{ entry.created_at.strftime('%B %d, %Y at %I:%M %p') }}</h2>
+                            
+                            <div class="entry-controls">
+                                <span class="text-sm text-gray-500">Mood: {{ entry.emoji or entry.mood }}</span>
+                                
+                                <details class="edit-toggle">
+                                    <summary>Edit</summary>
+                                    <div class="edit-form-wrapper">
+                                        <form action="{{ url_for('update_entry', entry_id=entry.id) }}" method="POST">
+                                            <textarea name="updated_entry">{{ entry.content }}</textarea>
+                                            <div class="form-actions">
+                                                <button type="submit">Update</button>
+                                                <a href="#" onclick="this.closest('details').removeAttribute('open'); return false;">Cancel</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </details>
+
+                                <form action="{{ url_for('delete_entry', entry_id=entry.id) }}" method="POST" style="display:inline;">
+                                    <button type="submit" class="delete-button" title="Delete Entry">
+                                        <img src="/static/trash.png" alt="Delete" width="22">
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <p class="entry-content whitespace-pre-wrap">{{ entry.content }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="no-entries">No past entries found. Start journaling today!</p>
+        {% endif %}
+    </div>
+</body>
+</html>

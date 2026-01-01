@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Apply as Professional</title>
+    <style>
+        * {
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    background: #f4f6f8;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 420px;
+    background: #ffffff;
+    margin: 60px auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+h1 {
+    margin-bottom: 10px;
+    font-size: 22px;
+    color: #333;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.field {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 6px;
+    color: #444;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: #5fa393;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #5fa393;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #4c8b7d;
+}
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Professional Verification</h1>
+    <p class="subtitle">
+        Apply to become a verified mental health professional.
+        All applications are manually reviewed.
+    </p>
+
+    <form action="/apply_professional/" method="POST" enctype="multipart/form-data">
+
+        <div class="field">
+            <label>Full Name</label>
+            <input type="text" name="name" required>
+        </div>
+
+        <div class="field">
+            <label>Professional Title</label>
+            <input type="text" name="profession" placeholder="Psychologist, Counselor, Therapist" required>
+        </div>
+
+        <div class="field">
+            <label>About You</label>
+            <textarea name="bio" rows="5" placeholder="Describe your experience, specialization, and approach" required></textarea>
+        </div>
+
+        <div class="field">
+            <label>Years of Experience</label>
+            <input type="number" name="experience" min="0" required>
+        </div>
+
+        <div class="field">
+            <label>Upload Certificate (PDF / Image)</label>
+            <input type="file" name="certificate" accept=".pdf,.jpg,.png" required>
+        </div>
+
+        <button type="submit">Submit for Verification</button>
+    </form>
+</div>
+
+</body>
+</html>

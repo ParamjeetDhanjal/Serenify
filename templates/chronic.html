@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serenify | Health & Vitality</title>
+    <style>
+        :root {
+            --health: #4e8d8d;
+            --health-deep: #3a6b6b;
+            --vital: #88b04b;
+            --base: #f4f7f6;
+            --text: #2f3e46;
+            --border: #d1d9d9;
+            --glass: rgba(255, 255, 255, 0.95);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', system-ui, sans-serif; }
+
+        body { 
+            background: var(--base); 
+            color: var(--text); 
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* --- LAYOUT --- */
+        header {
+            height: 70px;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 450px;
+            height: calc(100vh - 70px);
+        }
+
+        /* --- CONTENT PANEL --- */
+        .content-panel {
+            overflow-y: auto;
+            padding: 60px 8%;
+            background: white;
+            scrollbar-width: thin;
+        }
+
+        .hero-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            border-left: 6px solid var(--vital);
+            padding-left: 20px;
+        }
+
+        .journal-text { font-size: 1.1rem; line-height: 1.8; color: #4a5553; }
+        .journal-text b { color: var(--health); }
+        .journal-text h3 { margin-top: 30px; color: var(--health); }
+
+        /* --- FEED PANEL --- */
+        .feed-panel {
+            background: #edf2f1;
+            border-left: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feed-header {
+            padding: 25px;
+            background: var(--glass);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .feed-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* --- COMMENT CARDS --- */
+        .comment-node {
+            background: white;
+            padding: 20px;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .delete-btn-wrapper {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .delete-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            opacity: 0.2;
+            transition: 0.2s;
+        }
+
+        .delete-button:hover { opacity: 1; }
+        .delete-button img { width: 16px; height: 16px; }
+
+        .node-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .avatar-circle {
+            width: 36px; height: 36px;
+            background: var(--health);
+            color: white;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .user-name { font-weight: 700; font-size: 0.9rem; }
+        .time { font-size: 0.75rem; color: #8e9997; }
+
+        .comment-actions {
+            margin-top: 15px;
+            display: flex;
+            gap: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .action-link { color: var(--health); cursor: pointer; text-decoration: none; }
+
+        /* --- INPUTS & REPLIES --- */
+        .entry-box {
+            padding: 20px;
+            background: white;
+            border-top: 1px solid var(--border);
+        }
+
+        textarea {
+            width: 100%;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px;
+            outline: none;
+            resize: none;
+            background: var(--base);
+            font-size: 0.9rem;
+        }
+
+        .share-btn {
+            background: var(--health);
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+
+        .reply-thread {
+            margin-top: 12px;
+            padding-left: 15px;
+            border-left: 2px solid var(--vital);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .reply-item {
+            background: var(--base);
+            padding: 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 1000px) {
+            .dashboard { grid-template-columns: 1fr; }
+            .feed-panel { height: auto; overflow: visible; }
+            body { overflow: auto; height: auto; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div style="display:flex; align-items:center; gap:12px;">
+        <div style="width:35px; height:35px; background:var(--health); border-radius:50% 10% 50% 50%; color:white; display:flex; align-items:center; justify-content:center; font-weight:800;">S</div>
+        <span style="font-weight:800; font-size:1.4rem; letter-spacing:-0.5px;">Serenify</span>
+    </div>
+    <div style="font-size:0.75rem; font-weight:700; color:var(--health); background:white; padding:6px 16px; border-radius:100px; border:1px solid var(--border);">
+        ● Body Harmony Active
+    </div>
+</header>
+
+<div class="dashboard">
+    <main class="content-panel">
+        <h1 class="hero-title">"Small steps forward are still progress."</h1>
+        <div class="journal-text">
+            Chronic conditions can often lead to <b>Medical Fatigue</b>. To combat this, we look at the biological systems that govern rest.
+            
+            <h3>The Vagus Nerve</h3>
+            
+
+[Image of the vagus nerve and its role in the parasympathetic nervous system]
+
+            <br>
+            The Vagus nerve is the main component of the parasympathetic nervous system, which controls your "rest and digest" functions. Stimulating it through paced breathing helps tell your brain you are safe.
+
+            <div style="margin-top:30px; display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
+                <div style="background:var(--base); padding:20px; border-radius:20px; border:1px solid var(--border);">
+                    <strong style="color:var(--health);">🌱 Anti-Inflammatory</strong>
+                    <p style="font-size:0.85rem; margin-top:5px;">Fuel your repair crew with Omega-3s.</p>
+                </div>
+                <div style="background:var(--base); padding:20px; border-radius:20px; border:1px solid var(--border);">
+                    <strong style="color:var(--health);">🌊 Sensory Resting</strong>
+                    <p style="font-size:0.85rem; margin-top:5px;">Minimize inputs to allow internal healing.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <aside class="feed-panel">
+        <div class="feed-header">
+            <h2 style="font-size:1.1rem; color:var(--health);">Vitality Circle</h2>
+        </div>
+
+        <div class="feed-content">
+            {% for comment in comments if not comment.parent_id %}
+            <div class="comment-node">
+                {% if user and comment.author.id == user.id %}
+                <div class="delete-btn-wrapper">
+                    <form method="POST" action="{{ url_for('delete_comment', topic=topic, comment_id=comment.id) }}">
+                        <button type="submit" class="delete-button">
+                            <img src="/static/trash.png" alt="Delete">
+                        </button>
+                    </form>
+                </div>
+                {% endif %}
+
+                <div class="node-header">
+                    <div class="avatar-circle">{{ comment.author.name[:1] }}</div>
+                    <div>
+                        <div class="user-name">{{ comment.author.name }}</div>
+                        <div class="time">{{ comment.created_at.strftime('%b %d') }}</div>
+                    </div>
+                </div>
+                
+                <p style="font-size:0.95rem; line-height:1.5;">{{ comment.text }}</p>
+                
+                <div class="comment-actions">
+                    <span class="action-link" onclick="toggleDisplay('reply-{{ comment.id }}')">Reply</span>
+                    {% if comment.replies %}
+                    <span class="action-link" style="color:#8e9997" onclick="toggleDisplay('thread-{{ comment.id }}')">
+                        {{ comment.replies|length }} {% if comment.replies|length > 1 %}Replies{% else %}Reply{% endif %}
+                    </span>
+                    {% endif %}
+                </div>
+
+                <div id="reply-{{ comment.id }}" style="display:none; margin-top:10px;">
+                    <form action="{{ url_for('add_comment', topic=topic) }}" method="POST">
+                        <input type="hidden" name="parent_id" value="{{ comment.id }}">
+                        <textarea name="comment_text" rows="2" placeholder="Write a supportive reply..."></textarea>
+                        <button type="submit" class="share-btn" style="font-size:0.8rem;">Post Reply</button>
+                    </form>
+                </div>
+
+                <div id="thread-{{ comment.id }}" class="reply-thread" style="display:none;">
+                    {% for reply in comment.replies %}
+                    <div class="reply-item">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                            <strong>{{ reply.author.name }}</strong>
+                            <span class="time" style="font-size:0.7rem;">{{ reply.created_at.strftime('%b %d') }}</span>
+                        </div>
+                        {{ reply.text }}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="entry-box">
+            <form action="{{ url_for('add_comment', topic=topic) }}" method="POST">
+                <textarea name="comment_text" rows="2" placeholder="How is the body feeling today?"></textarea>
+                <button type="submit" class="share-btn">Log Reflection</button>
+            </form>
+        </div>
+    </aside>
+</div>
+
+<script>
+    function toggleDisplay(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        
+        const isHidden = (el.style.display === "none" || el.style.display === "");
+        el.style.display = isHidden ? "flex" : "none";
+        
+        if (id.startsWith('thread')) {
+            el.style.flexDirection = 'column';
+        }
+    }
+</script>
+
+</body>
+</html>

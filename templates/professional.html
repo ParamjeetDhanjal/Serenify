@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Dashboard | Serenify</title>
+    <style>
+        * { box-sizing: border-box; margin:0; padding:0; font-family: 'Segoe UI', sans-serif; }
+        body { background: #f3f6f5; color: #333; padding: 20px; }
+
+        header { background: #5fa393; padding: 20px; color: #fff; text-align: center; border-radius: 10px; margin-bottom: 30px; }
+        header h1 { margin-bottom: 5px; }
+        header span { font-size: 14px; opacity: 0.8; }
+
+        .cards { display: flex; gap: 20px; margin-bottom: 30px; flex-wrap: wrap; }
+        .card { flex: 1; min-width: 180px; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 8px 18px rgba(0,0,0,0.06); text-align: center; }
+        .card h3 { color: #5fa393; margin-bottom: 10px; font-size: 16px; }
+        .card p { font-size: 24px; font-weight: bold; }
+
+        table { width: 100%; border-collapse: collapse; margin-bottom: 30px; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 18px rgba(0,0,0,0.06); }
+        th, td { padding: 12px 15px; text-align: left; }
+        th { background: #e6f2f0; color: #333; }
+        tr:nth-child(even) { background: #f9f9f9; }
+        tr:hover { background: #e6f2f0; }
+
+        .btn { padding: 6px 12px; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; margin-right: 5px; }
+        .btn-accept { background: #5fa393; color: #fff; }
+        .btn-accept:hover { background: #4a7f6d; }
+        .btn-decline { background: #f05454; color: #fff; }
+        .btn-decline:hover { background: #c83b3b; }
+
+        .empty { color: #777; text-align: center; padding: 20px; }
+.btn-chat-link {
+    display: inline-block;
+    padding: 6px 12px;
+    background: #27ae60;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+.btn-chat-link:hover {
+    background: #219150;
+}
+
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.status-accepted { background: #e6f9ed; color: #27ae60; }
+.status-pending { background: #fff9e6; color: #f39c12; }
+.status-declined { background: #f9e6e6; color: #e74c3c; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Welcome, {{ professional.full_name }}</h1>
+    <span>{{ professional.profession }}</span>
+</header>
+
+<div class="cards">
+    <div class="card">
+        <h3>Appointments Today</h3>
+        <p>{{ today_count }}</p>
+    </div>
+    <div class="card">
+        <h3>Total Appointments</h3>
+        <p>{{ total_appointments }}</p>
+    </div>
+    <div class="card">
+        <h3>Rating</h3>
+        <p>{{ professional.rating or "—" }} ⭐</p>
+    </div>
+</div>
+
+<h3>Upcoming Appointments</h3>
+<div class="table-container">
+    {% if appointments %}
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Client</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for appt in appointments %}
+            <tr {% if appt.status == 'pending' %}style="background-color: #fffdf0;"{% endif %}>
+                <td>
+                    <strong>{{ appt.date.strftime('%d %b %Y') }}</strong>
+                    {% if appt.date > today %}
+                        <small style="color: #5fa393; display: block;">Upcoming</small>
+                    {% endif %}
+                </td>
+                <td>{{ appt.time_slot }}</td>
+                <td>{{ appt.full_name }}</td>
+                <td>
+                    <span class="status-badge status-{{ appt.status }}">
+                        {{ appt.status.capitalize() }}
+                    </span>
+                </td>
+                <td>
+    {% if appt.status == "pending" %}
+        <form method="post" action="/appointment/{{ appt.id }}/accept" style="display:inline;">
+            <button class="btn btn-accept">Accept</button>
+        </form>
+        <form method="post" action="/appointment/{{ appt.id }}/decline" style="display:inline;">
+            <button class="btn btn-decline">Decline</button>
+        </form>
+    {% elif appt.status == "accepted" %}
+        <a href="{{ url_for('session_chat', appt_id=appt.id) }}" 
+           style="background: #27ae60; color: white; padding: 6px 12px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+           💬 Chat
+        </a>
+    {% else %}
+        <span style="color: #999;">{{ appt.status.capitalize() }}</span>
+    {% endif %}
+</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="empty-state">
+        <p>No upcoming appointments found.</p>
+    </div>
+    {% endif %}
+</div>
+<a href="{{url_for('profession_logout')}}">Logout</a>
+</body>

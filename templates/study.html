@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serenify | Academic Flow</title>
+    <style>
+        :root {
+            --serenify: #5fa393;
+            --serenify-deep: #4a8276;
+            --serenify-glow: rgba(95, 163, 147, 0.1);
+            --bg: #f4f7f7;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* --- LAYOUT --- */
+        header {
+            height: 70px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            position: relative;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 450px;
+            height: calc(100vh - 70px);
+        }
+
+        .content-panel {
+            overflow-y: auto;
+            padding: 60px 8%;
+            background: white;
+            border-right: 1px solid var(--border);
+        }
+
+        .feed-panel {
+            background: var(--bg);
+            overflow-y: auto;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* --- TYPOGRAPHY & CARDS --- */
+        .quote-hero {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            background: linear-gradient(to right, var(--serenify-deep), #2d4a43);
+            -webkit-text-fill-color: transparent;
+        }
+
+        .article-body { font-size: 1.1rem; line-height: 1.8; color: #444; margin-bottom: 20px;}
+        .article-body b { color: var(--serenify-deep); }
+
+        .recipe-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 40px; }
+        .recipe-card {
+            background: var(--bg);
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .comment-card {
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            position: relative;
+        }
+
+        .delete-btn-wrapper {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .delete-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            opacity: 0.3;
+            transition: 0.2s;
+        }
+
+        .delete-button:hover { opacity: 1; }
+        .delete-button img { width: 18px; height: 18px; }
+
+        .avatar {
+            width: 36px; height: 36px; background: var(--serenify);
+            color: white; border-radius: 10px; display: flex;
+            align-items: center; justify-content: center; font-weight: 700;
+        }
+
+        .post-btn {
+            background: var(--serenify); color: white; border: none;
+            padding: 10px 20px; border-radius: 10px; font-weight: 600; cursor: pointer;
+        }
+
+        .replies-container {
+            margin-top: 15px; padding-left: 15px;
+            border-left: 2px solid var(--border);
+            display: flex; flex-direction: column; gap: 10px;
+        }
+
+        .reply-item { background: #f8fafc; padding: 12px; border-radius: 12px; font-size: 0.9rem; }
+
+        @media (max-width: 1000px) {
+            .dashboard { grid-template-columns: 1fr; }
+            body { overflow-y: auto; }
+            .dashboard { height: auto; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <div style="width:30px; height:30px; background:var(--serenify); border-radius:8px;"></div>
+        <span style="font-weight:900; font-size:1.3rem;">Serenify</span>
+    </div>
+    <div style="font-size:0.75rem; font-weight:700; color:var(--warm); border:1px solid var(--border); padding:5px 12px; border-radius:20px;">
+        ● Academic Balance
+    </div>
+</header>
+
+<div class="dashboard">
+    <main class="content-panel">
+        <h1 class="quote-hero">"The expert in anything was once a beginner."</h1>
+        
+        <div class="article-body">
+            Academic stress is actually a <b>chemical biological event</b>. When you feel like you are failing "everything," your brain is likely suffering from a cognitive brownout caused by sustained cortisol levels. 
+            <br><br>
+            
+            <br>
+            To break the cycle, you must stop fighting your brain and start working with it. Success isn't about how much you can suffer; it's about how well you can <b>regulate your nervous system</b>.
+        </div>
+
+        <div class="recipe-grid">
+            <div class="recipe-card">
+                <div style="font-weight:800; color:var(--serenify-deep);">⚡ Quick Hydration</div>
+                <div style="font-size:0.9rem; color:var(--text-light);">Pinch of sea salt + Lemon + Water.</div>
+            </div>
+            <div class="recipe-card">
+                <div style="font-weight:800; color:var(--serenify-deep);">🧠 Focus Fuel</div>
+                <div style="font-size:0.9rem; color:var(--text-light);">Walnuts for DHA and Omega-3s.</div>
+            </div>
+        </div>
+    </main>
+
+    <aside class="feed-panel">
+        <div style="font-weight:700; margin-bottom:10px;">Collective Thoughts</div>
+        
+        <div class="comment-card" style="margin-bottom:10px;">
+            <form action="{{ url_for('add_comment', topic=topic) }}" method="POST">
+                <textarea name="comment_text" rows="2" placeholder="How's your system feeling?" style="width:100%; border:none; outline:none; resize:none;"></textarea>
+                <div style="text-align:right;">
+                    <button type="submit" class="post-btn">Share Pulse</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="comment-thread">
+            {% for comment in comments if not comment.parent_id %}
+            <div class="comment-card" style="margin-bottom:15px;">
+                {% if user and comment.author.id == user.id %}
+                <div class="delete-btn-wrapper">
+                    <form method="POST" action="{{ url_for('delete_comment', topic=topic, comment_id=comment.id) }}">
+                        <button type="submit" class="delete-button">
+                            <img src="/static/trash.png" alt="Delete">
+                        </button>
+                    </form>
+                </div>
+                {% endif %}
+
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px;">
+                    <div class="avatar">{{ comment.author.name[:1] }}</div>
+                    <div>
+                        <div style="font-weight:700; font-size:0.9rem;">{{ comment.author.name }}</div>
+                        <div style="font-size:0.7rem; color:var(--text-light);">{{ comment.created_at.strftime('%b %d') }}</div>
+                    </div>
+                </div>
+                
+                <div class="comment-text">{{ comment.text }}</div>
+
+                <div style="margin-top:12px; display:flex; gap:15px;">
+                    <span style="font-size:0.8rem; font-weight:700; color:var(--serenify); cursor:pointer;" onclick="toggleReplyForm('{{ comment.id }}')">Reply</span>
+                    {% if comment.replies %}
+                    <span style="font-size:0.8rem; font-weight:700; color:var(--text-light); cursor:pointer;" onclick="toggleReplies('{{ comment.id }}')">{{ comment.replies|length }} Replies</span>
+                    {% endif %}
+                </div>
+
+                <div id="reply-form-{{ comment.id }}" style="display:none; margin-top:15px;">
+                    <form action="{{ url_for('add_comment', topic=topic) }}" method="POST">
+                        <input type="hidden" name="parent_id" value="{{ comment.id }}">
+                        <textarea name="comment_text" rows="1" placeholder="Reply..." style="width:100%; background:var(--bg); padding:10px; border-radius:10px; border:none; outline:none;"></textarea>
+                        <button type="submit" class="post-btn" style="font-size:0.75rem; padding:5px 12px; margin-top:5px;">Post</button>
+                    </form>
+                </div>
+
+                <div id="replies-{{ comment.id }}" class="replies-container" style="display:none;">
+                    {% for reply in comment.replies %}
+                    <div class="reply-item">
+                        <div style="font-weight:700; font-size:0.8rem;">{{ reply.author.name }}</div>
+                        {{ reply.text }}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </aside>
+</div>
+
+<script>
+    function toggleReplyForm(id) {
+        const el = document.getElementById("reply-form-" + id);
+        el.style.display = (el.style.display === "none") ? "block" : "none";
+    }
+    function toggleReplies(id) {
+        const el = document.getElementById("replies-" + id);
+        el.style.display = (el.style.display === "none") ? "flex" : "none";
+    }
+</script>
+
+</body>
+</html>

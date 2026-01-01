@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serenify | Meaning & Being</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cosmos: #1e1b4b; /* Deep Indigo */
+            --cosmos-light: #e0e7ff;
+            --soul: #818cf8; /* Soft Lavender */
+            --starlight: #f8fafc;
+            --text-void: #1e293b;
+            --border-mist: #e2e8f0;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+
+        body { 
+            background: var(--starlight); 
+            color: var(--text-void); 
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* --- HEADER --- */
+        header {
+            height: 70px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            padding: 0 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-mist);
+            z-index: 100;
+            position: relative;
+        }
+
+        .brand { display: flex; align-items: center; gap: 12px; }
+        .logo-sphere { width: 30px; height: 30px; background: var(--cosmos); border-radius: 50%; box-shadow: 0 0 15px var(--soul); }
+        .brand-name { font-weight: 900; font-size: 1.5rem; letter-spacing: -1px; color: var(--cosmos); }
+
+        /* --- DASHBOARD --- */
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 450px;
+            height: calc(100vh - 70px);
+        }
+
+        /* --- LEFT PANEL: EXISTENTIAL CONTENT --- */
+        .content-panel {
+            overflow-y: auto;
+            padding: 60px 10%;
+            background: var(--white);
+            scrollbar-width: thin;
+        }
+
+        .hero-quote {
+            font-size: 2.6rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 35px;
+            color: var(--cosmos);
+            border-left: 8px solid var(--soul);
+            padding-left: 25px;
+        }
+
+        .article-body { font-size: 1.15rem; line-height: 2; color: #475569; text-align: justify; }
+        .article-body b { color: var(--cosmos); font-weight: 800; }
+        .article-body h3 { margin-top: 45px; color: var(--soul); font-size: 1.5rem; font-weight: 800; }
+
+        /* --- COMMUNITY FEED --- */
+        .feed-panel {
+            display: flex;
+            flex-direction: column;
+            background: #f1f5f9;
+            padding: 20px;
+            overflow: hidden;
+            border-left: 1px solid var(--border-mist);
+        }
+
+        .feed-scroll {
+            flex: 1;
+            overflow-y: auto;
+            padding-right: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .comment-node {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 25px;
+            border: 1px solid var(--border-mist);
+            position: relative;
+            box-shadow: 0 4px 15px rgba(30, 27, 75, 0.05);
+        }
+
+        .avatar {
+            width: 38px; height: 38px; background: var(--cosmos);
+            color: white; border-radius: 12px; display: flex;
+            align-items: center; justify-content: center; font-weight: 800;
+        }
+
+        .btn-post {
+            background: var(--cosmos);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 100px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-post:hover { background: var(--soul); transform: translateY(-2px); }
+
+        .reply-well {
+            margin-top: 15px;
+            padding: 15px;
+            background: var(--cosmos-light);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        @media (max-width: 1000px) {
+            .dashboard { grid-template-columns: 1fr; }
+            body { overflow: auto; height: auto; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="brand">
+        <div class="logo-sphere"></div>
+        <span class="brand-name">Serenify</span>
+    </div>
+    <div style="font-size:0.75rem; font-weight:800; color:var(--soul); text-transform:uppercase; letter-spacing:2px;">
+        ● Consciousness Synced
+    </div>
+</header>
+
+<div class="dashboard">
+    <main class="content-panel">
+        <h1 class="hero-quote">"He who has a why to live can bear almost any how."</h1>
+        
+        <div class="article-body">
+            Existential dread—the crushing weight of the "void"—is often dismissed as a philosophical crisis, but it is deeply rooted in our biological evolution. When we experience a lack of purpose, our brain enters what psychologists call an <b>Existential Vacuum</b>. This isn't just a mood; it is the result of a highly developed <b>Prefrontal Cortex</b> that has finished ensuring our immediate survival and is now seeking a higher-order reason for its own complexity. 
+            
+            <h3>The Default Mode Network (DMN)</h3>
+            
+            <br>
+            When you sit in a state of hopelessness, your brain’s <b>Default Mode Network</b> becomes hyperactive. This is the circuit responsible for self-reflection and "time travel" (thinking about the past or future). Without a concrete purpose to anchor your attention, the DMN begins to loop, creating a feedback cycle of rumination that makes the universe feel cold, vast, and indifferent. 
+
+            <h3>The Biological Search for Meaning</h3>
+            Humans are <b>meaning-seeking organisms</b>. From a neurobiological standpoint, "purpose" is the ultimate regulator of our stress response. When we have a sense of mission, our brains release steady levels of <b>dopamine and norepinephrine</b>, which sharpen our focus and dampen the noise of existential anxiety. Without this chemical anchor, the world feels "flat"—a phenomenon known as anhedonia, where the things that once brought joy no longer trigger a reward response.
+
+            <h3>Navigating the Void</h3>
+            To heal from existential dread, we must move from <b>ruminative reflection</b> to <b>embodied action</b>. This is the core of Logotherapy: the realization that meaning is not something we *find* in the stars, but something we *create* through our response to life's demands. Dread is not the enemy; it is a signal from your nervous system that your current internal narrative has become too small for the vastness of your potential.
+
+            <p style="margin-top:20px;">
+                True vitality in the face of the void comes from <b>Radical Presence</b>. By grounding ourselves in the immediate sensory world, we quiet the DMN and allow the prefrontal cortex to re-engage with the "now." Purpose does not have to be a grand, cosmic destiny; it can be as simple as the biological duty to care for another living thing, to finish a craft, or to witness the sunrise.
+            </p>
+
+            <h3>The Physiology of Hopelessness</h3>
+            When we feel hopeless, our <b>HPA axis</b> (the stress feedback loop) can become dysregulated, leading to a state of "learned helplessness." In this state, the brain literally stops looking for exits. Breaking this requires <b>Micro-Meaning</b>: the act of assigning significant value to very small tasks to retrain the brain's reward circuitry.
+
+            <div style="margin-top:40px; display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+                <div style="background:var(--cosmos-light); padding:25px; border-radius:30px; border:1px solid var(--soul);">
+                    <strong style="color:var(--cosmos);">🔭 Cosmic Perspective</strong>
+                    <p style="font-size:0.9rem; margin-top:8px;">Acknowledging our smallness can be a relief. If the universe is vast and indifferent, you are free from the pressure of "perfect" meaning. You are allowed to simply exist.</p>
+                </div>
+                <div style="background:rgba(129, 140, 248, 0.1); padding:25px; border-radius:30px; border:1px solid var(--soul);">
+                    <strong style="color:var(--cosmos);">🌱 The Responsibility Hack</strong>
+                    <p style="font-size:0.9rem; margin-top:8px;">The fastest way to quiet existential dread is to be needed. Taking responsibility for a plant, a pet, or a community project provides a biological "Why" that silences the void.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <aside class="feed-panel">
+        <div class="feed-scroll">
+            <h2 style="font-size:1.1rem; margin-bottom:10px; color:var(--cosmos);">Void Reflections</h2>
+            
+            {% for comment in comments if not comment.parent_id %}
+            <div class="comment-node">
+                {% if user and comment.author.id == user.id %}
+                <div style="position:absolute; top:20px; right:25px;">
+                    <form method="POST" action="{{ url_for('delete_comment', topic=topic, comment_id=comment.id) }}">
+                        <button type="submit" style="background:none; border:none; cursor:pointer; opacity:0.3;"><img src="/static/trash.png" width="16"></button>
+                    </form>
+                </div>
+                {% endif %}
+
+                <div class="node-header">
+                    <div class="avatar">{{ comment.author.name[:1] }}</div>
+                    <div>
+                        <div style="font-weight:800; font-size:0.95rem;">{{ comment.author.name }}</div>
+                        <div style="font-size:0.75rem; color:var(--soul); font-weight:700;">DEC 23</div>
+                    </div>
+                </div>
+
+                <p style="line-height:1.6;">{{ comment.text }}</p>
+
+                <div style="margin-top:15px; display:flex; gap:20px; font-size:0.8rem; font-weight:800; text-transform:uppercase;">
+                    <span style="color:var(--soul); cursor:pointer;" onclick="toggleDisplay('rep-{{ comment.id }}')">Echo</span>
+                    {% if comment.replies %}
+                    <span style="color:var(--text-void); opacity:0.5; cursor:pointer;" onclick="toggleDisplay('th-{{ comment.id }}')">{{ comment.replies|length }} Echoes</span>
+                    {% endif %}
+                </div>
+
+                <div id="rep-{{ comment.id }}" style="display:none; margin-top:15px;">
+                    <form action="{{ url_for('add_comment', topic=topic) }}" method="POST">
+                        <input type="hidden" name="parent_id" value="{{ comment.id }}">
+                        <textarea name="comment_text" rows="2" placeholder="Write into the void..." style="width:100%; border:none; outline:none; background:var(--starlight); padding:10px; border-radius:10px;"></textarea>
+                        <button type="submit" class="btn-post" style="padding:6px 15px; font-size:0.8rem; margin-top:5px;">Post</button>
+                    </form>
+                </div>
+
+                <div id="th-{{ comment.id }}" class="reply-well" style="display:none;">
+                    {% for reply in comment.replies %}
+                    <div style="font-size:0.85rem; border-bottom:1px solid rgba(0,0,0,0.05); padding-bottom:5px;">
+                        <b style="color:var(--cosmos);">{{ reply.author.name }}:</b> {{ reply.text }}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div style="background:white; padding:20px; border-radius:25px; margin-top:15px; border:1px solid var(--border-mist);">
+            <form action="{{ url_for('add_comment', topic=topic) }}" method="POST">
+                <textarea name="comment_text" rows="2" placeholder="What does the void feel like today?" style="width:100%; border:none; outline:none; font-size:1rem;"></textarea>
+                <div style="text-align:right;">
+                    <button type="submit" class="btn-post">Share Pulse</button>
+                </div>
+            </form>
+        </div>
+    </aside>
+</div>
+
+<script>
+    function toggleDisplay(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const isHidden = (el.style.display === "none" || el.style.display === "");
+        el.style.display = isHidden ? "flex" : "none";
+        if (id.startsWith('th-')) el.style.flexDirection = 'column';
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serenify | Security & Wisdom</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ground: #bc8a7e;
+            --ground-deep: #9d6d62;
+            --sage: #95a393;
+            --cream: #fdf8f5;
+            --text: #4a4442;
+            --border: #eaddd7;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+
+        body { 
+            background: var(--cream); 
+            color: var(--text); 
+            height: 100vh;
+            overflow: hidden; /* Desktop layout is fixed; panels scroll */
+        }
+
+        /* --- HEADER --- */
+        header {
+            height: 70px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(15px);
+            padding: 0 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            position: relative;
+        }
+
+        .brand { display: flex; align-items: center; gap: 12px; }
+        .logo-sq { width: 32px; height: 32px; background: var(--ground); border-radius: 10px; }
+        .brand-name { font-weight: 900; font-size: 1.5rem; letter-spacing: -1px; }
+
+        /* --- DASHBOARD LAYOUT --- */
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 450px;
+            height: calc(100vh - 70px);
+        }
+
+        /* --- LEFT PANEL: ARTICLE --- */
+        .content-panel {
+            overflow-y: auto;
+            padding: 60px 10%;
+            background: var(--white);
+            border-radius: 0 40px 0 0;
+            scrollbar-width: thin;
+        }
+
+        .hero-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            color: var(--text);
+        }
+
+        .article-body { font-size: 1.1rem; line-height: 1.9; color: #6b6361; }
+        .article-body b { color: var(--ground-deep); }
+        .article-body h3 { margin-top: 40px; color: var(--ground); font-size: 1.4rem; font-weight: 800; }
+
+        .image-placeholder {
+            width: 100%;
+            height: 250px;
+            background: var(--cream);
+            border: 2px dashed var(--border);
+            border-radius: 30px;
+            margin: 30px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--ground);
+            font-weight: 700;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* --- RIGHT PANEL: COMMUNITY --- */
+        .feed-panel {
+            display: flex;
+            flex-direction: column;
+            background: var(--cream);
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .feed-scroll {
+            flex: 1;
+            overflow-y: auto;
+            padding-right: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* --- COMMENT CARDS --- */
+        .comment-node {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 30px;
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 20px rgba(188, 138, 126, 0.05);
+            position: relative;
+        }
+
+        .delete-btn-container {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+        }
+
+        .trash-icon {
+            background: none;
+            border: none;
+            cursor: pointer;
+            opacity: 0.3;
+            transition: 0.2s;
+        }
+        .trash-icon:hover { opacity: 1; }
+
+        .node-header { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; }
+        .avatar {
+            width: 38px; height: 38px; background: var(--ground);
+            color: white; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; font-weight: 800;
+        }
+
+        .user-name { font-weight: 800; font-size: 0.95rem; }
+        .date-stamp { font-size: 0.75rem; color: var(--sage); font-weight: 700; }
+
+        .comment-actions {
+            margin-top: 15px;
+            display: flex;
+            gap: 20px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .action-link { color: var(--ground); cursor: pointer; }
+
+        /* --- REPLIES & INPUT --- */
+        .reply-well {
+            margin-top: 15px;
+            padding: 15px;
+            background: var(--cream);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .reply-item { font-size: 0.9rem; border-bottom: 1px solid rgba(0,0,0,0.03); padding-bottom: 5px; }
+
+        .input-footer {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 25px;
+            margin-top: 15px;
+            border: 1px solid var(--border);
+        }
+
+        textarea {
+            width: 100%;
+            border: none;
+            outline: none;
+            resize: none;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            background: transparent;
+        }
+
+        .btn-main {
+            background: var(--ground);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 100px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-main:hover { background: var(--ground-deep); transform: translateY(-2px); }
+
+        @media (max-width: 1000px) {
+            .dashboard { grid-template-columns: 1fr; }
+            body { overflow: auto; height: auto; }
+            .dashboard { height: auto; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="brand">
+        <div class="logo-sq"></div>
+        <span class="brand-name">Serenify</span>
+    </div>
+    <div style="font-size:0.75rem; font-weight:800; color:var(--ground-deep); text-transform:uppercase; letter-spacing:1px;">
+        ● Security & Wisdom Active
+    </div>
+</header>
+
+<div class="dashboard">
+    <main class="content-panel">
+        <h1 class="hero-title">Financial Stability:<br>Calming the HPA Axis</h1>
+        
+        <div class="article-body">
+            Financial instability is often framed as a failure of math, but in the body, it is a <b>failure of safety</b>. When resources are low, the body triggers the <b>Hypothalamic-Pituitary-Adrenal (HPA) Axis</b>.
+            
+           
+            <h3>The Survival Shift</h3>
+            Once the HPA axis is activated, your brain prioritizes immediate survival over long-term strategy. This is why you might find it impossible to save $50 when you are worried about $500; the brain sees no point in "later" when "now" is on fire.
+
+            <h3>Gently Regaining Control</h3>
+            Restoring your financial wisdom requires <b>Somatic Grounding</b>. Before opening a bill or looking at a balance, you must tell your nervous system that you are physically safe. 
+
+            <div style="margin-top:40px; display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+                <div style="background:rgba(149, 163, 147, 0.1); padding:25px; border-radius:30px; border:1px solid var(--sage);">
+                    <strong style="color:var(--sage);">🌿 Sensory Anchor</strong>
+                    <p style="font-size:0.9rem; margin-top:8px;">Hold a piece of ice or a warm cup of tea while reviewing finances. It keeps the "logical" brain online.</p>
+                </div>
+                <div style="background:rgba(188, 138, 126, 0.1); padding:25px; border-radius:30px; border:1px solid var(--ground);">
+                    <strong style="color:var(--ground);">✨ Radical Inventory</strong>
+                    <p style="font-size:0.9rem; margin-top:8px;">Anxiety grows in the dark. Writing down every debt—no matter how scary—stops the Amygdala's imagination tax.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <aside class="feed-panel">
+        <div class="feed-scroll">
+            <h2 style="font-size:1.1rem; margin-bottom:10px; color:var(--ground-deep);">Security Circle</h2>
+            
+            {% for comment in comments if not comment.parent_id %}
+            <div class="comment-node">
+                {% if user and comment.author.id == user.id %}
+                <div class="delete-btn-container">
+                    <form method="POST" action="{{ url_for('delete_comment', topic=topic, comment_id=comment.id) }}">
+                        <button type="submit" class="trash-icon">
+                            <img src="/static/trash.png" alt="Delete" width="16">
+                        </button>
+                    </form>
+                </div>
+                {% endif %}
+
+                <div class="node-header">
+                    <div class="avatar">{{ comment.author.name[:1] }}</div>
+                    <div>
+                        <div class="user-name">{{ comment.author.name }}</div>
+                        <div class="date-stamp">DEC 22</div>
+                    </div>
+                </div>
+
+                <p style="line-height:1.6;">{{ comment.text }}</p>
+
+                <div class="comment-actions">
+                    <span class="action-link" onclick="toggleDisplay('rep-{{ comment.id }}')">Support</span>
+                    {% if comment.replies %}
+                    <span class="action-link" style="color:var(--sage);" onclick="toggleDisplay('th-{{ comment.id }}')">
+                        {{ comment.replies|length }} Reflections
+                    </span>
+                    {% endif %}
+                </div>
+
+                <div id="rep-{{ comment.id }}" style="display:none; margin-top:15px;">
+                    <form action="{{ url_for('add_comment', topic=topic) }}" method="POST">
+                        <input type="hidden" name="parent_id" value="{{ comment.id }}">
+                        <textarea name="comment_text" rows="2" placeholder="Share a gentle reflection..." style="border-bottom:1px solid var(--border);"></textarea>
+                        <button type="submit" class="btn-main" style="padding:6px 15px; font-size:0.8rem; margin-top:5px;">Post</button>
+                    </form>
+                </div>
+
+                <div id="th-{{ comment.id }}" class="reply-well" style="display:none;">
+                    {% for reply in comment.replies %}
+                    <div class="reply-item">
+                        <b style="color:var(--ground);">{{ reply.author.name }}:</b> {{ reply.text }}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="input-footer">
+            <form action="{{ url_for('add_comment', topic=topic) }}" method="POST">
+                <textarea name="comment_text" rows="2" placeholder="What is weighing on your system today?"></textarea>
+                <div style="text-align:right;">
+                    <button type="submit" class="btn-main">Share to Circle</button>
+                </div>
+            </form>
+        </div>
+    </aside>
+</div>
+
+<script>
+    function toggleDisplay(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const isHidden = (el.style.display === "none" || el.style.display === "");
+        el.style.display = isHidden ? "flex" : "none";
+        // Ensure flex-direction is column for threads
+        if (id.startsWith('th-')) el.style.flexDirection = 'column';
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reveria Signup</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #61b6f3;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .signup-box {
+      width: 350px;
+      padding: 40px;
+      background-color: #161616;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); 
+      border: 1px solid #333;
+    }
+
+    /* --- CHANGED: Removed bottom margin to close the gap --- */
+    .signup-box img {
+      height: auto;
+      width: 180px;
+      margin-bottom: 0px; /* Changed from 20px to 0px */
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* --- CHANGED: Reduced top margin for inputs to pull them up --- */
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 5px 0 10px 0; /* Reduced top margin to 5px */
+      border: 1px solid #333;
+      border-radius: 6px;
+      background-color: #222;
+      color: #ddd;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    input:focus {
+      border-color: rgb(130, 175, 211);
+      box-shadow: 0 0 8px rgba(130, 175, 211, 0.2);
+      background-color: #2a2a2a;
+    }
+
+    .show-password {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin: 0px 0 20px 0; /* Reduced top margin here too */
+      font-size: 13px;
+      color: #aaa;
+      cursor: pointer;
+    }
+
+    .show-password input {
+      width: auto;
+      margin: 0 8px 0 2px;
+      cursor: pointer;
+    }
+
+    .show-password label {
+        cursor: pointer;
+        user-select: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: rgb(130, 175, 211);
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    button:hover {
+      background-color: rgb(100, 145, 181);
+    }
+
+    .login-link {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #888;
+    }
+
+    .login-link a {
+      color: rgb(130, 175, 211);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .login-link a:hover {
+      text-decoration: underline;
+    }
+
+    .message-text {
+        color: #ff6b6b;
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="signup-box">
+    <img src="/static/logo.png" alt="Reveria Logo" onerror="this.style.display='none'">
+    
+    {% if message %}
+        <p class="message-text">{{ message }}</p>
+    {% endif %}
+
+    <form method="POST" action="/signup/">
+      <input type="email" name='email' placeholder="Email" required>
+      <input type="text" name='name' placeholder="Name" required>
+      <input type="text" name='username' placeholder="Username" required>
+      <input type="password" name="password" id="password" placeholder="Password">
+      
+      <div class="show-password">
+        <input type="checkbox" id="showPwd" onclick="togglePassword()">
+        <label for="showPwd">Show password</label>
+      </div>
+
+      <button type="submit">Sign up</button>
+    </form>
+
+    <div class="login-link">
+      Already have an account? <a href="/login">Log in</a>
+    </div>
+  </div>
+
+  <script>
+    function togglePassword() {
+      const pwd = document.getElementById("password");
+      pwd.type = pwd.type === "password" ? "text" : "password";
+    }
+  </script>
+
+</body>
+</html>
