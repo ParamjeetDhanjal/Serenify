@@ -2,7 +2,7 @@ from datetime import datetime,timedelta
 from fileinput import filename
 from datetime import date
 import os
-from flask import Flask, render_template, request, redirect, session, url_for
+from flask import Flask, get_flashed_messages, render_template, request, redirect, session, url_for,flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -727,6 +727,22 @@ def session_chat(appt_id):
 
     # Otherwise, return the whole page
     return render_template('session_chat.html', appt=appt, chat_messages=chat_messages, current_user=user)
+@app.route('/toss-into-void', methods=['POST'])
+def toss_into_void():
+    # We grab the thought but don't save it to any database
+    _ = request.form.get('thought') 
+    
+    # We send a "success" signal back to the UI
+    flash("Gone forever.", "void_success")
+    
+    # Redirect specifically to the #void ID so the user sees the animation
+    return redirect(url_for('home') + '#void')
+@app.route('/clear-void')
+def clear_void():
+    # Calling get_flashed_messages() here clears the queue 
+    # so the animation doesn't show up again.
+    _ = get_flashed_messages(category_filter=["void_success"])
+    return redirect(url_for('home') + '#void')
 # --- Run App ---
 if __name__ == '__main__':
     app.run(debug=True)

@@ -79,6 +79,21 @@
             color: #1f2937;
         }
 
+        .breathing-circle {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(95,163,147,0.25), transparent 70%);
+  animation: breathe 6s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0% { transform: scale(0.9); opacity: 0.6; }
+  50% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.6; }
+}
+
+
         /* Custom Button Styles - Soft Glow and Inner Shadow */
         .btn-base {
             color: white;
@@ -164,9 +179,168 @@
 .emoji:hover {
     transform: scale(1.3);
 }
+/* --- The Portal UI Logic --- */
 
-     
+/* 1. Initial State: Static and Subtle */
+.breathing-portal {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--color-primary), transparent 70%);
+    opacity: 0.3;
+    transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: blur(20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+/* 2. The "Active" State: Triggered when the URL ends in #start */
+#welcome:target .breathing-portal {
+    animation: portal-breathe 8s ease-in-out infinite;
+    opacity: 0.8;
+    width: 450px;
+    height: 450px;
+    filter: blur(0px);
+    background: radial-gradient(circle, var(--color-primary) 0%, var(--color-accent) 50%, transparent 75%);
+    box-shadow: 0 0 100px var(--color-shadow-light);
+}
+
+/* 3. The Instruction Text: Changes when active */
+.breath-instruction::before { content: "READY TO BEGIN?"; }
+#welcome:target .breath-instruction::before { content: "INHALE..."; animation: label-swap 8s infinite; }
+
+/* 4. Animations */
+@keyframes portal-breathe {
+    0%, 100% { transform: scale(0.8); filter: blur(10px); opacity: 0.4; }
+    50% { transform: scale(1.2); filter: blur(0px); opacity: 0.9; }
+}
+
+@keyframes label-swap {
+    0%, 100%, 10% { content: "INHALE..."; opacity: 1; }
+    40%, 60% { content: "HOLD..."; opacity: 0.5; }
+    70%, 95% { content: "EXHALE..."; opacity: 1; }
+}
+
+/* Hide the button once the session starts to keep UI clean */
+#welcome:target .begin-btn {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+}
+    
+/* --- Stop Button Logic --- */
+
+/* 1. Hide the Stop button by default */
+.stop-btn-container {
+    display: none; 
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+/* 2. Only show the Stop button when the session starts (#welcome is the target) */
+#welcome:target .stop-btn-container {
+    display: block;
+    opacity: 1;
+    margin-top: 3rem;
+}
+
+/* 3. Style for the Stop Button to look 'Unique' and Minimal */
+.stop-link {
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: #94a3b8; /* Slate 400 */
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    padding: 10px 25px;
+    border-radius: 999px;
+    transition: all 0.4s ease;
+}
+
+.stop-link:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    background: rgba(244, 192, 165, 0.05);
+    box-shadow: 0 0 20px rgba(244, 192, 165, 0.2);
+}
+/* --- Dustbin Animation --- */
+.void-form {
+    position: relative;
+    overflow: hidden;
+}
+.void-form:active textarea {
+    animation: crumple-and-fall 0.8s ease-in forwards;
+}
+
+@keyframes crumple-and-fall {
+    0% { transform: scale(1) rotate(0deg); opacity: 1; }
+    30% { transform: scale(0.5) rotate(15deg); border-radius: 50%; background: #eee; }
+    100% { transform: scale(0) translateY(500px) rotate(90deg); opacity: 0; }
+}
+
+/* --- The Dustbin UI Logic --- */
+.void-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.95);
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+}
+
+.bin-container {
+    font-size: 5rem;
+    position: relative;
+    animation: bin-shake 0.5s ease-in-out;
+}
+
+.paper-crumple {
+    width: 60px;
+    height: 60px;
+    background: #e5e7eb;
+    border-radius: 50%;
+    position: absolute;
+    top: -100px;
+    animation: fall-into-bin 1s cubic-bezier(0.5, 0, 0.5, 1) forwards;
+    box-shadow: inset -5px -5px 10px rgba(0,0,0,0.1);
+}
+
+@keyframes fall-into-bin {
+    0% { transform: translateY(0) scale(1) rotate(0deg); opacity: 1; }
+    80% { transform: translateY(160px) scale(0.5) rotate(180deg); opacity: 1; }
+    100% { transform: translateY(180px) scale(0) rotate(360deg); opacity: 0; }
+}
+
+@keyframes bin-shake {
+    0%, 70%, 100% { transform: scale(1); }
+    80% { transform: scale(1.1) translateY(5px); }
+    90% { transform: scale(1) translateY(0); }
+}
+
+.animate-fade-in {
+    animation: fade-in 1s ease-out;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.void-overlay {
+    background: #ffffff;
+    /* Subtle vertical lines to mimic a paper shredder */
+    background-image: linear-gradient(90deg, transparent 95%, rgba(0,0,0,0.03) 95%);
+    background-size: 20px 100%;
+}
+
+.paper-ball {
+    /* Give the ball a 'crumpled paper' texture */
+    background: #f3f4f6;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1), inset -2px -2px 5px rgba(255,255,255,0.5);
+}
 </style>
 
     <!-- Use Inter font -->
@@ -215,22 +389,31 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
 
         <!-- 1. Hero & Welcome Section -->
-        <section id="welcome" class="text-center py-32 bg-white rounded-[2.5rem] card-shadow mb-20 relative overflow-hidden">
-            <!-- Subtle Blurry Background Elements -->
-            <div class="hero-circle hero-circle-1"></div>
-            <div class="hero-circle hero-circle-2"></div>
-            
-            <div class="relative z-10 max-w-4xl mx-auto">
-                <!-- Icon for Capstone look (A soft heart inside a circle) -->
-                <svg class="serenify-icon mx-auto mb-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"></path>
-                    <path d="M12 8.5C10.5 6.5 8 7 8 9.5c0 2.5 4 4.5 4 4.5s4-2 4-4.5c0-2.5-2.5-3-4-1z"></path>
-                </svg>
+        <section id="welcome" class="relative py-40 bg-white rounded-[2.5rem] card-shadow mb-20 overflow-hidden text-center transition-all duration-1000">
 
-                <h2 class="text-7xl font-extrabold text-gray-900 mb-6 tracking-tighter">Your Sanctuary, Serenify</h2>
-                <p class="text-3xl" style="color:var(--color-primary); font-weight: 300;">
-                    Find quiet strength in reflection and connection.
-                </p>
+  <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+    <div class="breathing-portal"></div>
+  </div>
+
+  <div class="relative z-10 max-w-3xl mx-auto">
+    <p class="breath-instruction tracking-widest text-sm text-gray-400 mb-4 uppercase transition-all duration-500"></p>
+
+    <h2 class="text-6xl font-extrabold mb-6 text-gray-900 tracking-tighter">Serenify</h2>
+
+    <div class="begin-btn">
+        <p class="text-xl font-light text-gray-500 mb-10">Release the weight of the day.</p>
+        <a href="#welcome" class="btn-primary inline-block px-10 py-4 rounded-full text-lg tracking-widest hover:scale-110 transition-transform">
+          RESTORE THE RHYTHM
+        </a>
+    </div>
+
+    <div class="stop-btn-container">
+        <a href="#" class="stop-link">
+            Stop Session
+        </a>
+    </div>
+  </div>
+</section>
 
                 <div class="mt-12">
                     <a href="#quotes" class="inline-block btn-primary shadow-2xl hover:scale-[1.03]">
@@ -249,19 +432,47 @@
                 </a>
 
 <!-- 3. The Void -->
-        <section id="void" class="py-12">
-            <h3 class="text-4xl font-bold mb-10 section-header">The Void: Release Your Heavy Thoughts</h3>
-            <div class="p-12 bg-white rounded-[2rem] card-shadow border-2" style="border-color: var(--color-accent);">
-                <h4 class="text-3xl font-semibold mb-4" style="color:var(--color-accent);">Toss Into the Silent Void</h4>
-                <p class="mb-6 text-gray-600 text-lg">Type out the frustrations, anxieties, or raw thoughts you need to cast away. This is for release, not record.</p>
-                <div role="group">
-                    <textarea placeholder="Let it all out here... This space holds no judgement." class="void-input w-full p-6 rounded-2xl h-48"></textarea>
-                    <a href="#" class="block text-center mt-6 py-4 px-6 btn-accent hover:scale-[1.005]">
-                        Toss Into the Silent Void
-                    </a>
+    <section id="void" class="py-12 relative">
+    <h3 class="text-4xl font-bold mb-10 section-header">The Void</h3>
+    
+    <div class="relative p-12 bg-white rounded-[2rem] card-shadow border-2" style="border-color: var(--color-accent); overflow: hidden;">
+        
+        {% with messages = get_flashed_messages(category_filter=["void_success"]) %}
+          {% if messages %}
+            <div class="void-overlay">
+                <div class="paper-crumple"></div>
+                <div class="bin-container">
+                    <span class="bin-lid"></span>
+                    <span class="bin-body">🗑️</span>
                 </div>
+                <p class="mt-4 font-bold text-orange-500 tracking-widest animate-fade-in">RELEASED INTO THE SILENCE</p>
+                <a href="{{ url_for('clear_void') }}" 
+   class="fade-in-text mt-6 px-6 py-2 rounded-full border border-orange-200 text-sm hover:bg-orange-50 transition-colors" 
+   style="color:var(--color-accent)">
+   Write Another
+</a>
             </div>
-        </section>
+          {% endif %}
+        {% endwith %}
+
+        <div class="void-content">
+            <h4 class="text-2xl font-semibold mb-2" style="color:var(--color-accent);">Toss into the Dustbin</h4>
+            <p class="mb-6 text-gray-500">Your thoughts aren't saved. They are just shredded.</p>
+            
+            <form action="/toss-into-void" method="POST">
+                <textarea 
+                    name="thought"
+                    placeholder="Type your frustration..." 
+                    class="void-input w-full p-6 rounded-2xl h-48 border-dashed border-2 border-orange-200 focus:border-orange-400 transition-all"
+                    required></textarea>
+                
+                <button type="submit" class="w-full mt-6 py-4 px-6 btn-accent rounded-xl font-bold text-white tracking-widest uppercase hover:brightness-110 active:scale-95 transition-all">
+                    SHRED AND FORGET
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
 
         <!-- 4. Private Diary (Cleaned for Backend Integration) -->
        <section id="diary" class="py-12">
