@@ -1,16 +1,13 @@
-from datetime import datetime,timedelta
-from fileinput import filename
+from datetime import datetime
 from datetime import date
 import os
 from flask import Flask, get_flashed_messages, render_template, request, redirect, session, url_for,flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from sqlalchemy import cast, Date
-import json
-import re # For text preprocessing
-import random # For choosing random responses
-from fuzzywuzzy import process, fuzz # Fuzzy text matching
+from dotenv import load_dotenv
+import google.generativeai as genai
+
 
 # --- Flask App Configuration ---
 app = Flask(__name__)
@@ -19,6 +16,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+load_dotenv()
+app.secret_key = os.getenv("SECRET_KEY", "your_fallback_secret")
 
 # --- Database Models ---
 class DiaryEntry(db.Model):
@@ -108,66 +107,6 @@ class User(db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
-
-# --- Load chatbot dataset ---
-try:
-    with open("chatbot.json", "r", encoding="utf-8") as f:
-        full_dataset = json.load(f)
-except FileNotFoundError:
-    print("WARNING: 'chatbot.json' not found. Chatbot responses will be limited.")
-    full_dataset = []
-
-pattern_list = [entry.get('pattern', '') for entry in full_dataset if isinstance(entry, dict)]
-print(f"Loaded {len(pattern_list)} patterns for chatbot.")
-
-# ----------------------------------------------------
-# --- Chatbot Improvement: Preprocessing Function ---
-# ----------------------------------------------------
-def preprocess_text(text):
-    """Converts to lowercase and removes punctuation for better matching."""
-    if not isinstance(text, str):
-        return ""
-    text = text.lower()
-    # Remove punctuation, keeping only letters, numbers, and spaces
-    text = re.sub(r'[^\w\s]', '', text) 
-    return text
-
-# -------------------------------------------------
-# --- Chatbot Improvement: Retrieval Logic ---
-# -------------------------------------------------
-def retrieve_response(user_input):
-    if not pattern_list:
-        return "I'm sorry, my response database is empty."
-
-    # Preprocess the user input before comparison
-    processed_input = preprocess_text(user_input)
-    
-    # Use token_set_ratio for better sentence/phrase matching
-    best_match_tuple = process.extractOne(
-        processed_input, 
-        pattern_list, 
-        scorer=fuzz.token_set_ratio # The key improvement!
-    )
-    
-    # Use a stricter similarity threshold
-    MIN_SIMILARITY_SCORE = 80 
-    
-    if best_match_tuple and best_match_tuple[1] >= MIN_SIMILARITY_SCORE:
-        best_match_pattern = best_match_tuple[0]
-        
-        # Find the corresponding entry in the full dataset
-        for entry in full_dataset:
-            if entry.get('pattern') == best_match_pattern:
-                response = entry.get('response')
-                
-                # Handle single response string or a list of responses
-                if isinstance(response, list):
-                    return random.choice(response)
-                
-                return response or "I found a relevant topic, but the full response is missing."
-    
-    # Fallback response
-    return "I hear that you're struggling, and I'm listening. Could you rephrase or tell me more about what you're feeling?"
 
 # --- Routes ---
 @app.route('/')
@@ -259,19 +198,62 @@ def diary():
     return redirect(url_for('home'))
 
 # --- Chatbot Session-Based Route ---
-@app.route('/chatbot/', methods=['GET','POST'])
+
+
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+
+# 1. Strict System Instruction to solve "Too much text" and "Bad formatting"
+SYSTEM_PROMPT = """
+You are a brief, empathetic mental health companion.
+- LIMIT: Keep every response under 50 words.
+- FORMAT: Use plain text only. 
+- NO MARKDOWN: Never use stars (**), hashtags (#), or bullet points.
+- TONE: Calm and supportive.
+"""
+
+model = genai.GenerativeModel(
+    model_name="gemini-3-flash-preview", # Or "gemini-3-flash-preview" as requested
+    system_instruction=SYSTEM_PROMPT
+)
+
+def retrieve_response(user_input):
+    try:
+        # Start a chat session with history if needed, or simple generation
+        response = model.generate_content(user_input)
+        
+        # 2. Manual Cleaning (No addons needed)
+        # Removes common markdown symbols just in case the AI ignores instructions
+        clean_text = response.text.replace("**", "").replace("__", "").replace("#", "")
+        
+        return clean_text.strip()
+    except Exception as e:
+        return "I'm here for you, but I'm having a small technical hiccup. How else can I help?"
+
+# --- Your existing routes follow ---
+
+# --- Chatbot Route ---
+@app.route('/chatbot/', methods=['GET', 'POST'])
 def chatbot():
-    # Initialize history
+    # 1. Initialize history if it's a new session
     if 'chat_history' not in session:
-        session['chat_history'] = [{'speaker':'bot', 'text':"Hello! I'm here to listen without judgment. How can I support you today?"}]
+        session['chat_history'] = [{
+            'speaker': 'bot', 
+            'text': "Hello! I'm here to listen without judgment. How can I support you today?"
+        }]
 
     if request.method == 'POST':
-        user_input = request.form.get('message','').strip()
+        user_input = request.form.get('message', '').strip()
         if user_input:
+            # 2. Get AI response
             bot_response = retrieve_response(user_input)
-            session['chat_history'].append({'speaker':'user','text':user_input})
-            session['chat_history'].append({'speaker':'bot','text':bot_response})
-            session.modified = True
+            
+            # 3. Update history
+            # In Flask, we must copy, modify, and re-assign to ensure the session saves
+            history = session['chat_history']
+            history.append({'speaker': 'user', 'text': user_input})
+            history.append({'speaker': 'bot', 'text': bot_response})
+            session['chat_history'] = history
+            
         return redirect(url_for('chatbot'))
 
     return render_template('chatbot.html', history=session['chat_history'])

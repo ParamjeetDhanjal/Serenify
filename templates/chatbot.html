@@ -4,260 +4,213 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compassion Bot</title>
-<style>
-    :root {
-        /* Define a calming color palette (Kept the same) */
-        --primary-color:#5fa393 ;
-        --secondary-color: #B2D8D8;
-        --background-color: #f7f9fc;
-        --surface-color: #ffffff;
-        --text-color: #3C4858;
-        --header-color: #5fa393;
-        --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
-        --radius-large: 16px;
-        --radius-small: 8px;
-    }
+    <style>
+        :root {
+            --primary-color: #5fa393;
+            --secondary-color: #B2D8D8;
+            --background-color: #f7f9fc;
+            --surface-color: #ffffff;
+            --text-color: #3C4858;
+            --header-color: #5fa393;
+            --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --radius-large: 16px;
+            --radius-small: 8px;
+        }
 
-    body {
-        font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: var(--background-color);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        margin: 0;
-        color: var(--text-color);
-    }
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: var(--text-color);
+        }
 
-    .chat-container {
-        /* *** KEY CHANGES START HERE *** */
-        width: 90%; /* Increased width percentage */
-        max-width: 1000px; /* Set a new, wider maximum width for very large screens */
-        height: 95vh; /* Increased height percentage */
-        /* *** KEY CHANGES END HERE *** */
+        .chat-container {
+            width: 90%;
+            max-width: 1000px;
+            height: 95vh;
+            background-color: var(--surface-color);
+            box-shadow: var(--shadow-light);
+            border-radius: var(--radius-large);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: box-shadow 0.3s ease;
+        }
 
-        background-color: #5fa393;
-        box-shadow: var(--shadow-light);
-        border-radius: var(--radius-large);
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-        transition: box-shadow 0.3s ease;
-    }
+        .chat-header {
+            background-color: var(--header-color);
+            color: white;
+            padding: 20px 15px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
 
-    .chat-header {
-        background-color: var(--header-color);
-        color: white;
-        padding: 20px 15px;
-        text-align: center;
-        position: relative;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        z-index: 10;
-    }
+        .chat-header h1 {
+            margin: 0;
+            font-size: 1.6rem;
+            font-weight: 600;
+        }
 
-    .chat-header h1 {
-        margin: 0;
-        font-size: 1.6rem;
-        font-weight: 600;
-    }
+        .back-link {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
 
-    .chat-header p {
-        margin: 5px 0 0 0;
-        font-size: 0.9rem;
-        opacity: 0.9;
-    }
+        .chat-history {
+            flex-grow: 1;
+            padding: 20px 15px;
+            overflow-y: auto;
+            background-color: var(--surface-color);
+            display: flex;
+            flex-direction: column;
+            scroll-behavior: smooth;
+        }
 
-    .back-link {
-        position: absolute;
-        left: 15px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: white;
-        text-decoration: none;
-        font-size: 0.9rem;
-        transition: opacity 0.2s;
-    }
+        .message {
+            display: flex;
+            margin-bottom: 18px;
+            animation: fadeIn 0.3s ease-out;
+        }
 
-    .back-link:hover {
-        opacity: 0.8;
-    }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-    .chat-history {
-        flex-grow: 1;
-        padding: 20px 15px;
-        overflow-y: auto;
-        background-color: var(--surface-color);
-        display: flex;
-        flex-direction: column;
-        scroll-behavior: smooth;
-    }
+        .message p {
+            max-width: 65%;
+            padding: 12px 18px;
+            border-radius: 20px;
+            line-height: 1.5;
+            word-wrap: break-word;
+            font-size: 0.95rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
 
-    /* Scrollbar styling for a cleaner look (optional, but nice) */
-    .chat-history::-webkit-scrollbar {
-        width: 6px;
-    }
-    .chat-history::-webkit-scrollbar-thumb {
-        background-color: #d1d9e6;
-        border-radius: 3px;
-    }
+        .user-message { justify-content: flex-end; }
+        .user-message p {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 20px 20px 4px 20px;
+        }
 
-    .message {
-        display: flex;
-        margin-bottom: 18px;
-        animation: fadeIn 0.3s ease-out;
-    }
+        .bot-message { justify-content: flex-start; }
+        .bot-message p {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            border: 1px solid #e0e6ed;
+            border-radius: 20px 20px 20px 4px;
+        }
 
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
+        /* Thinking Indicator Styling */
+        .typing-indicator {
+            display: none; /* Hidden by default */
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            font-style: italic;
+        }
 
-    .message p {
-        /* Reduced max-width to keep messages readable on wider screens */
-        max-width: 65%;
-        padding: 12px 18px;
-        border-radius: 20px;
-        line-height: 1.5;
-        word-wrap: break-word;
-        font-size: 0.95rem;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        transition: all 0.2s ease-out;
-    }
+        .chat-input-form {
+            display: flex;
+            padding: 15px;
+            border-top: 1px solid #e0e0e0;
+            background-color: var(--surface-color);
+            align-items: center;
+        }
 
-    .user-message {
-        justify-content: flex-end;
-    }
+        .chat-input-form input {
+            flex-grow: 1;
+            padding: 12px 18px;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            margin-right: 10px;
+            font-size: 1rem;
+            outline: none;
+        }
 
-    .user-message p {
-        background-color: var(--primary-color);
-        color: white;
-        border-radius: 20px 20px 4px 20px;
-    }
+        .send-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+        }
 
-    .bot-message {
-        justify-content: flex-start;
-    }
+        .clear-btn {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-left: 10px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
 
-    .bot-message p {
-        background-color: var(--secondary-color);
-        color: var(--text-color);
-        border: 1px solid #e0e6ed;
-        border-radius: 20px 20px 20px 4px;
-    }
-
-    .chat-input-form {
-        display: flex;
-        padding: 15px;
-        border-top: 1px solid #e0e0e0;
-        background-color: var(--surface-color);
-        align-items: center;
-    }
-
-    .chat-input-form input {
-        flex-grow: 1;
-        padding: 12px 18px;
-        border: 1px solid #ccc;
-        border-radius: 25px;
-        margin-right: 10px;
-        font-size: 1rem;
-        outline: none;
-        transition: border-color 0.2s, box-shadow 0.2s;
-    }
-
-    .chat-input-form input:focus {
-        border-color: var(--primary-color);
-        box-shadow: 0 0 0 2px rgba(93, 156, 236, 0.2);
-    }
-
-    .send-btn {
-        background-color: var(--primary-color);
-        color: white;
-        border: none;
-        padding: 12px 22px;
-        border-radius: 25px;
-        cursor: pointer;
-        font-size: 1rem;
-        font-weight: 500;
-        transition: background-color 0.2s, transform 0.1s;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    .send-btn:hover {
-        background-color: #518c7e;
-    }
-
-    .send-btn:active {
-        transform: scale(0.98);
-    }
-
-    /* Clear button refinement */
-    .clear-btn {
-        background-color: #ff6b6b;
-        color: white;
-        border: none;
-        padding: 12px 18px;
-        border-radius: 25px;
-        cursor: pointer;
-        font-size: 0.9rem;
-        font-weight: 500;
-        margin-left: 10px;
-        transition: background-color 0.2s, transform 0.1s;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    .clear-btn:hover {
-        background-color: #e55c5c;
-    }
-
-    .clear-btn:active {
-        transform: scale(0.98);
-    }
-
-    /* Ensure the 'a' tag wrapping the button doesn't affect button styles */
-    .chat-input-form a {
-        text-decoration: none;
-    }
-
-    .chat-input-form a button {
-        /* Reset button styles from the link wrapper */
-        display: block;
-    }
-
-</style>
+        /* Mobile Responsiveness */
+        @media (max-width: 600px) {
+            .chat-container { width: 100%; height: 100vh; border-radius: 0; }
+            .message p { max-width: 85%; }
+        }
+    </style>
 </head>
 <body>
     <div class="chat-container">
         <header class="chat-header">
             <a href="/" class="back-link">← Home</a>
             <h1>Compassion Bot</h1>
-            <p>I am here to listen without judgment. Ask me anything.</p>
+            <p>I am here to listen without judgment.</p>
         </header>
 
         <div class="chat-history" id="chatHistory">
             {% for message in history %}
-                {% if message.speaker == 'user' %}
-                    <div class="message user-message">
-                        <p>{{ message.text }}</p>
-                    </div>
-                {% else %}
-                    <div class="message bot-message">
-                        <p>{{ message.text }}</p>
-                    </div>
-                {% endif %}
+                <div class="message {% if message.speaker == 'user' %}user-message{% else %}bot-message{% endif %}">
+                    <p>{{ message.text }}</p>
+                </div>
             {% endfor %}
+            <div id="typingIndicator" class="typing-indicator">Compassion Bot is thinking...</div>
         </div>
 
-        <form method="POST" action="{{ url_for('chatbot') }}" class="chat-input-form">
-            <input type="text" name="message" placeholder="Type your concern here..." required autocomplete="off">
-            <button type="submit" class="send-btn">Send</button>
-            <a href="{{ url_for('clear_chat') }}"><button type="button" class="clear-btn">Clear Chat</button></a>
+        <form method="POST" action="{{ url_for('chatbot') }}" class="chat-input-form" id="chatForm">
+            <input type="text" name="message" id="userInput" placeholder="Type your concern here..." required autocomplete="off">
+            <button type="submit" class="send-btn" id="sendBtn">Send</button>
+            <a href="{{ url_for('clear_chat') }}" class="clear-btn">Clear Chat</a>
         </form>
     </div>
 
     <script>
-        // Auto-scroll to bottom
         const chatHistory = document.getElementById('chatHistory');
+        const chatForm = document.getElementById('chatForm');
+        const typingIndicator = document.getElementById('typingIndicator');
+
+        // 1. Auto-scroll to bottom on load
         chatHistory.scrollTop = chatHistory.scrollHeight;
+
+        // 2. Show "Thinking" indicator when form is submitted
+        chatForm.onsubmit = function() {
+            typingIndicator.style.display = 'block';
+            chatHistory.scrollTop = chatHistory.scrollHeight;
+            // Optionally disable button to prevent double clicks
+            document.getElementById('sendBtn').disabled = true;
+            document.getElementById('sendBtn').innerText = "...";
+        };
     </script>
 </body>
 </html>
