@@ -9,3 +9,4 @@ fuzzywuzzy
 python-Levenshtein
 requests
 pandas
+google.generativeai
