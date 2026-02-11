@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meditation - Serenify</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --color-primary: #5fa393;
+            --color-secondary: #f2f8f7;
+            --color-text: #333d47;
+            --color-accent: #f4c0a5;
+            --color-shadow-light: rgba(95, 163, 147, 0.25);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, var(--color-secondary) 50%, #f7faf9 100%);
+            color: var(--color-text);
+            min-height: 100vh;
+        }
+        .card-shadow {
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(8px);
+            border-radius: 2rem;
+            box-shadow: 0 20px 50px var(--color-shadow-light), 0 8px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+        .btn-primary { background-color: var(--color-primary); color: white; border-radius: 0.75rem; transition: all 0.3s ease; }
+        .btn-primary:hover { filter: brightness(1.1); transform: scale(1.02); }
+        .section-header { border-left: 6px solid var(--color-primary); padding-left: 1.5rem; }
+    </style>
+</head>
+<body class="p-6 md:p-12">
+    <main class="max-w-6xl mx-auto">
+        <header class="flex justify-between items-center mb-12">
+            <div>
+                <h2 class="text-4xl font-extrabold section-header">Meditation Sessions</h2>
+                <p class="text-gray-500 mt-2 ml-6">Mindfulness minutes:  {{ total_minutes }} | Total sessions: {{ total_sessions }}</p>
+            </div>
+            <a href="/meditation/add" class="btn-primary px-6 py-3 font-bold shadow-lg">Add New Session</a>
+        </header>
+
+        <div class="flex gap-4 mb-10 overflow-x-auto pb-2">
+            <a href="{{ url_for('meditation_page', type='all') }}" class="px-6 py-2 rounded-full bg-white shadow-sm border border-gray-100 hover:border-teal-400 transition">All</a>
+            <a href="{{ url_for('meditation_page', type='guided') }}" class="px-6 py-2 rounded-full bg-white shadow-sm border border-gray-100 hover:border-teal-400 transition">Guided</a>
+            <a href="{{ url_for('meditation_page', type='breathing') }}" class="px-6 py-2 rounded-full bg-white shadow-sm border border-gray-100 hover:border-teal-400 transition">Breathing</a>
+        </div>
+
+        <div class="grid gap-6">
+          {% for session in sessions %}
+<div class="card-shadow p-8 flex flex-col md:flex-row justify-between items-center hover:scale-[1.01]">
+    
+    <div class="flex items-center gap-6">
+        <div class="text-4xl bg-teal-50 w-16 h-16 rounded-full flex items-center justify-center">🧘</div>
+        <div>
+            <h3 class="text-2xl font-bold text-gray-800">{{ session.title }}</h3>
+            <p class="text-teal-600 font-medium">
+                {{ session.type|capitalize }} • {{ session.duration }} Minutes
+            </p>
+        </div>
+    </div>
+
+    <div class="mt-4 md:mt-0 flex items-center gap-4">
+        
+        <span class="text-sm font-bold uppercase tracking-widest text-gray-400">
+            {{ session.difficulty }}
+        </span>
+
+        <a href="{{ url_for('meditation_detail', session_id=session.id) }}" 
+           class="btn-primary px-6 py-2">
+            Start
+        </a>
+
+        {% if user.id == session.created_by %}
+        <form method="POST" 
+              action="{{ url_for('delete_meditation', session_id=session.id) }}"
+              onsubmit="return confirm('Delete this session permanently?');">
+
+            <button type="submit"
+                class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition">
+                Delete
+            </button>
+        </form>
+        {% endif %}
+
+    </div>
+</div>
+{% endfor %}
+
+        </div>
+    </main>
+</body>
+</html>

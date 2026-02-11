@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Meditation - Serenify</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-white to-teal-50 p-8">
+
+<div class="max-w-4xl mx-auto bg-white rounded-3xl shadow-2xl p-10">
+
+    <h1 class="text-3xl font-bold text-teal-600 mb-6">
+        Add Meditation Session
+    </h1>
+
+    <form method="POST" class="space-y-6">
+
+        <div>
+            <label class="font-semibold">Title</label>
+            <input type="text" name="title" required
+                   class="w-full mt-2 p-4 rounded-xl border border-gray-200">
+        </div>
+
+        <div class="grid grid-cols-2 gap-6">
+            <div>
+                <label class="font-semibold">Type</label>
+                <select name="type"
+                        class="w-full mt-2 p-4 rounded-xl border border-gray-200">
+                    <option value="guided">Guided</option>
+                    <option value="breathing">Breathing</option>
+                    <option value="mindfulness">Mindfulness</option>
+                    <option value="body_scan">Body Scan</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="font-semibold">Difficulty</label>
+                <select name="difficulty"
+                        class="w-full mt-2 p-4 rounded-xl border border-gray-200">
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="advanced">Advanced</option>
+                </select>
+            </div>
+        </div>
+
+        <div>
+            <label class="font-semibold">Description</label>
+            <textarea name="description" rows="3"
+                      class="w-full mt-2 p-4 rounded-xl border border-gray-200"></textarea>
+        </div>
+
+        <div>
+            <label class="font-semibold">Script</label>
+            <textarea name="script" rows="4"
+                      class="w-full mt-2 p-4 rounded-xl border border-gray-200"></textarea>
+        </div>
+
+        <div>
+            <label class="font-semibold">Audio URL</label>
+            <input type="text" name="audio_url"
+                   class="w-full mt-2 p-4 rounded-xl border border-gray-200">
+        </div>
+
+        <button type="submit"
+                class="w-full bg-teal-600 text-white py-4 rounded-xl font-bold hover:brightness-110 transition">
+            Add Meditation
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

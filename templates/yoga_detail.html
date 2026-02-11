@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ pose.name }} - Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-white to-teal-50 p-10">
+
+<div class="max-w-4xl mx-auto bg-white rounded-3xl shadow-2xl p-10">
+
+    <h1 class="text-4xl font-bold text-teal-600 mb-4">
+        {{ pose.name }}
+    </h1>
+
+    <p class="text-gray-500 mb-4">
+        {{ pose.category|capitalize }} • {{ pose.difficulty|capitalize }} • {{ pose.duration }} mins
+    </p>
+
+    {% if pose.image_url %}
+        <img src="{{ url_for('static', filename='yoga_images/' + pose.image_url) }}"
+             class="rounded-2xl mb-6">
+    {% endif %}
+
+    <div class="mb-6">
+        <h2 class="font-bold text-lg">Benefits</h2>
+        <p>{{ pose.benefits }}</p>
+    </div>
+
+    <div class="mb-6">
+        <h2 class="font-bold text-lg">Instructions</h2>
+        <p class="whitespace-pre-line">{{ pose.instructions }}</p>
+    </div>
+
+    {% if pose.precautions %}
+    <div class="mb-6">
+        <h2 class="font-bold text-lg text-red-500">Precautions</h2>
+        <p>{{ pose.precautions }}</p>
+    </div>
+    {% endif %}
+{% if pose.video_url %}
+    <video controls class="w-full rounded-xl mt-6">
+        <source src="{{ url_for('static', filename='yoga_videos/' + pose.video_url) }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+{% endif %}
+
+
+</div>
+
+</body>
+</html>

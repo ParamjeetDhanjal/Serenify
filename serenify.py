@@ -107,6 +107,45 @@ class User(db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+    
+
+class YogaPose(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    category = db.Column(db.String(50), nullable=False)  # beginner, intermediate, advanced
+    difficulty = db.Column(db.String(20), nullable=False)
+    benefits = db.Column(db.Text, nullable=False)
+    instructions = db.Column(db.Text, nullable=False)
+    precautions = db.Column(db.Text, nullable=True)
+    image_url = db.Column(db.String(200), nullable=True)
+    video_url = db.Column(db.String(200), nullable=True)
+    created_by = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.now)
+    
+    creator = db.relationship('User', backref='yoga_poses')
+
+class MeditationSession(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    type = db.Column(db.String(50), nullable=False)  # guided, breathing, mindfulness, body_scan
+    description = db.Column(db.Text, nullable=False)
+    audio_url = db.Column(db.String(200), nullable=True)
+    script = db.Column(db.Text, nullable=True)
+    difficulty = db.Column(db.String(20), nullable=False)
+    created_by = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.now)
+    
+    creator = db.relationship('User', backref='meditation_sessions')
+
+class UserProgress(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    activity_type = db.Column(db.String(20), nullable=False)  # yoga or meditation
+    activity_id = db.Column(db.Integer, nullable=False)
+    completed_at = db.Column(db.DateTime, default=datetime.now)
+    duration_completed = db.Column(db.Integer, nullable=False)
+    notes = db.Column(db.Text, nullable=True)
+
 
 # --- Routes ---
 @app.route('/')
@@ -725,6 +764,285 @@ def clear_void():
     # so the animation doesn't show up again.
     _ = get_flashed_messages(category_filter=["void_success"])
     return redirect(url_for('home') + '#void')
+
+@app.route('/yoga/')
+def yoga_page():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+    
+    user = User.query.filter_by(username=session['username']).first()
+    
+    # Get filter parameters
+    difficulty_filter = request.args.get('difficulty', 'all')
+    category_filter = request.args.get('category', 'all')
+    
+    # Build query
+    query = YogaPose.query
+    
+    if difficulty_filter != 'all':
+        query = query.filter_by(difficulty=difficulty_filter)
+    if category_filter != 'all':
+        query = query.filter_by(category=category_filter)
+    
+    poses = query.order_by(YogaPose.created_at.desc()).all()
+    
+    # Get user's completed yoga sessions
+    user_progress = UserProgress.query.filter_by(
+        user_id=user.id,
+        activity_type='yoga'
+    ).all()
+    
+    completed_ids = [p.activity_id for p in user_progress]
+    
+    return render_template('yoga.html', 
+                         user=user, 
+                         poses=poses, 
+                         completed_ids=completed_ids,
+                         difficulty_filter=difficulty_filter,
+                         category_filter=category_filter)
+
+@app.route('/yoga/add', methods=['GET', 'POST'])
+def add_yoga_pose():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+    
+    user = User.query.filter_by(username=session['username']).first()
+    
+    if request.method == 'POST':
+        name = request.form.get('name')
+        category = request.form.get('category')
+        difficulty = request.form.get('difficulty')
+        benefits = request.form.get('benefits')
+        instructions = request.form.get('instructions')
+        precautions = request.form.get('precautions')
+        video_file = request.files.get('video')
+        video_filename = None
+
+        if video_file and video_file.filename:
+            video_filename = f"yoga_{datetime.now().strftime('%Y%m%d_%H%M%S')}_{video_file.filename}"
+            video_folder = os.path.join(app.static_folder, 'yoga_videos')
+            os.makedirs(video_folder, exist_ok=True)
+            video_file.save(os.path.join(video_folder, video_filename))
+        # Handle image upload
+        image_file = request.files.get('image')
+        image_filename = None
+        
+        if image_file and image_file.filename:
+            image_filename = f"yoga_{datetime.now().strftime('%Y%m%d_%H%M%S')}_{image_file.filename}"
+            img_folder = os.path.join(app.static_folder, 'yoga_images')
+            os.makedirs(img_folder, exist_ok=True)
+            image_file.save(os.path.join(img_folder, image_filename))
+        
+        new_pose = YogaPose(
+            name=name,
+            category=category,
+            difficulty=difficulty,
+            benefits=benefits,
+            instructions=instructions,
+            precautions=precautions,
+            image_url=image_filename,
+            video_url=video_filename,
+            created_by=user.id
+        )
+        
+        db.session.add(new_pose)
+        db.session.commit()
+        flash('Yoga pose added successfully!', 'success')
+        return redirect(url_for('yoga_page'))
+    
+    return render_template('add_yoga.html', user=user)
+
+@app.route('/yoga/<int:pose_id>')
+def yoga_detail(pose_id):
+    if 'username' not in session:
+        return redirect(url_for('login'))
+    
+    user = User.query.filter_by(username=session['username']).first()
+    pose = YogaPose.query.get_or_404(pose_id)
+    
+    # Check if user completed this pose
+    progress = UserProgress.query.filter_by(
+        user_id=user.id,
+        activity_type='yoga',
+        activity_id=pose_id
+    ).first()
+    
+    return render_template('yoga_detail.html', user=user, pose=pose, progress=progress)
+
+@app.route('/yoga/<int:pose_id>/complete', methods=['POST'])
+def complete_yoga(pose_id):
+    if 'username' not in session:
+        return redirect(url_for('login'))
+    
+    user = User.query.filter_by(username=session['username']).first()
+    duration = request.form.get('duration', 0)
+    notes = request.form.get('notes', '')
+    
+    progress = UserProgress(
+        user_id=user.id,
+        activity_type='yoga',
+        activity_id=pose_id,
+        duration_completed=int(duration),
+        notes=notes
+    )
+    
+    db.session.add(progress)
+    db.session.commit()
+    flash('Great job! Yoga session completed!', 'success')
+    return redirect(url_for('yoga_page'))
+
+@app.route('/meditation/')
+def meditation_page():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+    
+    user = User.query.filter_by(username=session['username']).first()
+    
+    # Get filter parameters
+    type_filter = request.args.get('type', 'all')
+    duration_filter = request.args.get('duration', 'all')
+    
+    # Build query
+    query = MeditationSession.query
+    
+    if type_filter != 'all':
+        query = query.filter_by(type=type_filter)
+    if duration_filter != 'all':
+        if duration_filter == 'short':
+            query = query.filter(MeditationSession.duration <= 10)
+        elif duration_filter == 'medium':
+            query = query.filter(MeditationSession.duration > 10, MeditationSession.duration <= 20)
+        else:  # long
+            query = query.filter(MeditationSession.duration > 20)
+    
+    sessions = query.order_by(MeditationSession.created_at.desc()).all()
+    
+    # Get user's meditation stats
+    user_progress = UserProgress.query.filter_by(
+        user_id=user.id,
+        activity_type='meditation'
+    ).all()
+    
+    total_minutes = sum(p.duration_completed for p in user_progress)
+    total_sessions = len(user_progress)
+    
+    return render_template('meditation.html', 
+                         user=user, 
+                         sessions=sessions,
+                         total_minutes=total_minutes,
+                         total_sessions=total_sessions,
+                         type_filter=type_filter,
+                         duration_filter=duration_filter)
+
+@app.route('/meditation/add', methods=['GET', 'POST'])
+def add_meditation():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+    
+    user = User.query.filter_by(username=session['username']).first()
+    
+    if request.method == 'POST':
+        title = request.form.get('title')
+        type = request.form.get('type')
+        description = request.form.get('description')
+        script = request.form.get('script')
+        difficulty = request.form.get('difficulty')
+        audio_url = request.form.get('audio_url')
+        
+        new_session = MeditationSession(
+            title=title,
+            type=type,
+            description=description,
+            script=script,
+            difficulty=difficulty,
+            audio_url=audio_url,
+            created_by=user.id
+        )
+        
+        db.session.add(new_session)
+        db.session.commit()
+        flash('Meditation session added successfully!', 'success')
+        return redirect(url_for('meditation_page'))
+    
+    return render_template('add_meditation.html', user=user)
+
+@app.route('/meditation/<int:session_id>')
+def meditation_detail(session_id):
+    if 'username' not in session:
+        return redirect(url_for('login'))
+    
+    user = User.query.filter_by(username=session['username']).first()
+    session_data = MeditationSession.query.get_or_404(session_id)
+    
+    return render_template('meditation_detail.html', user=user, session=session_data)
+
+@app.route('/meditation/<int:session_id>/complete', methods=['POST'])
+def complete_meditation(session_id):
+    if 'username' not in session:
+        return redirect(url_for('login'))
+    
+    user = User.query.filter_by(username=session['username']).first()
+    duration = request.form.get('duration', 0)
+    notes = request.form.get('notes', '')
+    
+    progress = UserProgress(
+        user_id=user.id,
+        activity_type='meditation',
+        activity_id=session_id,
+        duration_completed=int(duration),
+        notes=notes
+    )
+    
+    db.session.add(progress)
+    db.session.commit()
+    flash('Wonderful! Meditation session completed!', 'success')
+    return redirect(url_for('meditation_page'))
+
+@app.route('/meditation/<int:session_id>/delete', methods=['POST'])
+def delete_meditation(session_id):
+    if 'username' not in session:
+        return redirect(url_for('login'))
+
+    user = User.query.filter_by(username=session['username']).first()
+    session_data = MeditationSession.query.get_or_404(session_id)
+
+    # Only allow creator to delete
+    if session_data.created_by != user.id:
+        flash("You are not authorized to delete this session.", "danger")
+        return redirect(url_for('meditation_page'))
+
+    # Delete related progress first (optional but safer)
+    UserProgress.query.filter_by(
+        activity_type='meditation',
+        activity_id=session_id
+    ).delete()
+
+    db.session.delete(session_data)
+    db.session.commit()
+
+    flash("Meditation session deleted successfully.", "success")
+    return redirect(url_for('meditation_page'))
+
+@app.route('/yoga/<int:pose_id>/delete', methods=['POST'])
+def delete_yoga(pose_id):
+    if 'username' not in session:
+        return redirect(url_for('login'))
+
+    pose = YogaPose.query.get_or_404(pose_id)
+
+    # Optional: Only creator can delete
+    user = User.query.filter_by(username=session['username']).first()
+    if pose.created_by != user.id:
+        flash("You cannot delete this pose.", "danger")
+        return redirect(url_for('yoga_page'))
+
+    db.session.delete(pose)
+    db.session.commit()
+
+    flash("Yoga pose deleted successfully!", "success")
+    return redirect(url_for('yoga_page'))
+
+
 # --- Run App ---
 if __name__ == '__main__':
     app.run(debug=True)

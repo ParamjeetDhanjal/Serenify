@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ session.title }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+
+    <div class="card shadow">
+        <div class="card-body">
+
+            <h2 class="mb-3">{{ session.title }}</h2>
+
+            <p><strong>Type:</strong> {{ session.type }}</p>
+            <p><strong>Difficulty:</strong> {{ session.difficulty }}</p>
+            <p><strong>Duration:</strong> {{ session.duration }} minutes</p>
+
+            <hr>
+
+            <h5>Description</h5>
+            <p>{{ session.description }}</p>
+
+            {% if session.script %}
+            <hr>
+            <h5>Guided Script</h5>
+            <p style="white-space: pre-line;">{{ session.script }}</p>
+            {% endif %}
+
+            {% if session.audio_url %}
+            <hr>
+            <h5>Audio</h5>
+            <audio controls class="w-100">
+                <source src="{{ session.audio_url }}">
+                Your browser does not support audio.
+            </audio>
+            {% endif %}
+
+            <hr>
+
+            <!-- COMPLETE FORM -->
+            <form method="POST" action="{{ url_for('complete_meditation', session_id=session.id) }}">
+                <div class="mb-3">
+                    <label>Duration Completed (minutes)</label>
+                    <input type="number" name="duration" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label>Notes (optional)</label>
+                    <textarea name="notes" class="form-control"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-success">
+                    Mark as Completed
+                </button>
+            </form>
+
+            <hr>
+
+            <!-- DELETE BUTTON (only show to creator) -->
+            {% if user.id == session.created_by %}
+            <form method="POST" action="{{ url_for('delete_meditation', session_id=session.id) }}">
+                <button type="submit" class="btn btn-danger"
+                        onclick="return confirm('Are you sure you want to delete this session?')">
+                    Delete Session
+                </button>
+            </form>
+            {% endif %}
+
+            <br>
+            <a href="{{ url_for('meditation_page') }}" class="btn btn-secondary">
+                Back
+            </a>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
