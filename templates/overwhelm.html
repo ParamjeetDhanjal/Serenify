@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>General Overwhelm</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serenify | Heart & Home</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&display=swap" rel="stylesheet">
+
     <style>
         :root {
             --warm: #bc8a7e;
@@ -204,119 +204,128 @@
         }
     </style>
 </head>
+
 <body>
 
-<header>
-    <div style="display:flex; align-items:center; gap:12px;">
-        <img src="/static/logo.png" alt="Logo" height="35">
-        <span style="font-weight:900; font-size:1.4rem; letter-spacing:-1px;">Serenify</span>
-    </div>
-    <div style="font-size:0.75rem; font-weight:700; color:var(--warm); border:1px solid var(--border); padding:5px 12px; border-radius:20px;">
-        ● Relational Balance
-    </div>
+<div class="layout">
+
+   <header>
+    <div style="font-weight:800; font-size:1.2rem;">General Overwhelm</div>
 </header>
 
 <div class="dashboard">
-    <main class="content-area">
-        <h1 class="hero-quote">"You can care without carrying everything."</h1>
-        
-        <div class="article-text">
-            Family friction isn't a sign of a "broken" home; it's often a sign of <b>unmet emotional needs</b>. When we feel disconnected, our nervous system enters a state of high alert.
-            
-            
 
-            <h3>The Sacred 10-Second Gap</h3>
-            Biologically, the emotional brain reacts in <b>0.07 seconds</b>, but the logical brain takes <b>10 full seconds</b> to catch up. Most relationship damage happens in that gap.
-            
-            <p style="margin-top:20px;">By taking three deep breaths, you are literally waiting for your brain to regain its capacity for logic and love.</p>
+    <!-- LEFT: ARTICLE -->
+    <div class="content-area">
+
+        <h1 class="hero-quote">"You don’t have to fix everything today."</h1>
+
+        <div class="article-text">
+            General overwhelm happens when your brain is juggling
+            <b>too many responsibilities, decisions, and expectations at once.</b>
+            It’s not laziness. It’s cognitive overload.
+
+            <h3>Why It Feels Paralyzing</h3>
+
+            When tasks stack up, your brain shifts into threat mode.
+            Instead of prioritizing clearly, it freezes.
+            This is called <b>decision fatigue + mental saturation</b>.
+
+            <p style="margin-top:20px;">
+                The solution isn’t pushing harder.
+                It’s reducing mental load and restoring structure.
+            </p>
 
             <div style="margin-top:40px; display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
+                
                 <div style="background:var(--accent-glow); padding:20px; border-radius:20px;">
-                    <strong style="color:var(--warm);"> Soft Start-ups</strong>
-                    <p style="font-size:0.85rem; margin-top:5px;">Begin difficult talks with "I feel" statements.</p>
+                    <strong style="color:var(--warm);">Brain Dump</strong>
+                    <p style="font-size:0.85rem; margin-top:5px;">
+                        Write every open task down. Chaos becomes manageable when visible.
+                    </p>
                 </div>
-                <div style="background:var(--accent-glow); padding:20px; border-radius:20px;">
-                    <strong style="color:var(--warm);"> 20-Min Reset</strong>
-                    <p style="font-size:0.85rem; margin-top:5px;">Take space for cortisol to drop.</p>
-                </div>
-            </div>
-        </div>
-    </main>
 
-    <aside class="community-sidebar">
+                <div style="background:var(--accent-glow); padding:20px; border-radius:20px;">
+                    <strong style="color:var(--warm);">One Small Win</strong>
+                    <p style="font-size:0.85rem; margin-top:5px;">
+                        Complete one small task to regain momentum.
+                    </p>
+                </div>
+
+            </div>
+
+            <h3 style="margin-top:40px;">The 3-Step Reset</h3>
+
+            <p style="margin-top:10px;">
+                1. <b>Physical Reset</b> – Drink water, breathe slowly, step outside.<br>
+                2. <b>Mental Reset</b> – Identify the top 3 real priorities.<br>
+                3. <b>Structural Reset</b> – Break one big task into 3 micro-actions.
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- RIGHT: COMMUNITY FEED -->
+    <div class="community-sidebar">
+
         <div class="feed-header">
-            <h2 style="font-size:1.2rem; color:var(--warm);">Heart Circle</h2>
-            <p style="font-size:0.8rem; opacity:0.7;">Join the collective conversation.</p>
+            <h3>Community Support</h3>
+            <p style="font-size:0.9rem; color:#8c7f7c;">
+                Share what feels heavy. You’re not alone.
+            </p>
         </div>
 
         <div class="feed-scroll">
-            {% for comment in comments if not comment.parent_id %}
+
+            {% for comment in comments %}
             <div class="comment-card">
-                {% if user and comment.author.id == user.id %}
+
+                {% if user and comment.author == user.username %}
                 <div class="delete-btn-wrapper">
-                    <form method="POST" action="{{ url_for('delete_comment', topic=topic, comment_id=comment.id) }}">
-                        <button type="submit" class="delete-button">
-                            <img src="/static/trash.png" alt="Delete">
+                    <form method="POST"
+                          action="{{ url_for('delete_comment', topic=topic, comment_id=comment.id) }}">
+                        <button class="delete-button" type="submit">
+                            ✕
                         </button>
                     </form>
                 </div>
                 {% endif %}
 
                 <div class="user-meta">
-                    <div class="mini-avatar">{{ comment.author.name[:1] }}</div>
+                    <div class="mini-avatar">
+                        {{ comment.author[0]|upper }}
+                    </div>
                     <div>
-                        <div class="user-name">{{ comment.author.name }}</div>
-                        <div class="post-date">{{ comment.created_at.strftime('%I:%M %p') }}</div>
+                        <div class="user-name">{{ comment.author }}</div>
+                        <div class="post-date">
+                            {{ comment.timestamp.strftime('%b %d, %Y') if comment.timestamp else "" }}
+                        </div>
                     </div>
                 </div>
-                <div class="comment-content">{{ comment.text }}</div>
-                
-                <div class="card-actions">
-                    <span class="action-btn" onclick="toggleElement('reply-form-{{ comment.id }}')">Reply</span>
-                    {% if comment.replies %}
-                    <span class="action-btn" style="color:#b2a4a1" onclick="toggleElement('replies-{{ comment.id }}')">
-                        {{ comment.replies|length }} Replies
-                    </span>
-                    {% endif %}
+
+                <div>
+                    {{ comment.text }}
                 </div>
 
-                <div id="reply-form-{{ comment.id }}" style="display:none; margin-top:10px;">
-                    <form action="{{ url_for('add_comment', topic=topic) }}" method="POST">
-                        <input type="hidden" name="parent_id" value="{{ comment.id }}">
-                        <textarea name="comment_text" rows="2" placeholder="Write a gentle reply..."></textarea>
-                        <button type="submit" class="share-btn" style="padding:8px; font-size:0.8rem;">Post Reply</button>
-                    </form>
-                </div>
-
-                <div id="replies-{{ comment.id }}" class="reply-well" style="display:none;">
-                    {% for reply in comment.replies %}
-                    <div class="reply-item">
-                        <strong>{{ reply.author.name }}:</strong> {{ reply.text }}
-                    </div>
-                    {% endfor %}
-                </div>
             </div>
             {% endfor %}
+
         </div>
 
+        <!-- INPUT AREA -->
         <div class="input-box">
-            <form action="{{ url_for('add_comment', topic=topic) }}" method="POST">
-                <textarea name="comment_text" rows="2" placeholder="What's on your heart?"></textarea>
-                <button type="submit" class="share-btn">Share to Circle</button>
+            <form method="POST" action="{{ url_for('add_comment', topic=topic) }}">
+                <textarea name="comment_text" rows="3"
+                          placeholder="What’s overwhelming you right now?"
+                          required></textarea>
+                <button class="share-btn" type="submit">Share</button>
             </form>
         </div>
-    </aside>
+
+    </div>
+
 </div>
-
-<script>
-    function toggleElement(id) {
-        const el = document.getElementById(id);
-        if (!el) return;
-        const isHidden = el.style.display === "none" || el.style.display === "";
-        el.style.display = isHidden ? "flex" : "none";
-        if(id.startsWith('replies')) el.style.flexDirection = 'column';
-    }
-</script>
-
+</div>
 </body>
 </html>
